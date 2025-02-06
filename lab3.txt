@@ -1,0 +1,167 @@
+@pudgevmid ➜ /workspaces/-02.01 (main) $ ls Test
+1  2  3
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat Test
+  File: Test
+  Size: 4096            Blocks: 8          IO Block: 4096   directory
+Device: 704h/1796d      Inode: 1310811     Links: 2
+Access: (0777/drwxrwxrwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:38.966330134 +0000
+Modify: 2025-02-06 06:06:38.230330159 +0000
+Change: 2025-02-06 06:06:38.230330159 +0000
+ Birth: -
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat Test/
+  File: Test/
+  Size: 4096            Blocks: 8          IO Block: 4096   directory
+Device: 704h/1796d      Inode: 1310811     Links: 2
+Access: (0777/drwxrwxrwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:38.966330134 +0000
+Modify: 2025-02-06 06:06:38.230330159 +0000
+Change: 2025-02-06 06:06:38.230330159 +0000
+ Birth: -
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo chmod o-x Test/*
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat Test/*
+  File: Test/1
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310812     Links: 1
+Access: (0666/-rw-rw-rw-)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:33.186330329 +0000
+Modify: 2025-02-06 06:06:33.186330329 +0000
+Change: 2025-02-06 06:08:23.418326616 +0000
+ Birth: -
+  File: Test/2
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310813     Links: 1
+Access: (0666/-rw-rw-rw-)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:35.074330266 +0000
+Modify: 2025-02-06 06:06:35.074330266 +0000
+Change: 2025-02-06 06:08:23.418326616 +0000
+ Birth: -
+  File: Test/3
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310814     Links: 1
+Access: (0666/-rw-rw-rw-)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:38.230330159 +0000
+Modify: 2025-02-06 06:06:38.230330159 +0000
+Change: 2025-02-06 06:08:23.418326616 +0000
+ Birth: -
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo chmod o+x Test/*
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat Test/*
+  File: Test/1
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310812     Links: 1
+Access: (0667/-rw-rw-rwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:33.186330329 +0000
+Modify: 2025-02-06 06:06:33.186330329 +0000
+Change: 2025-02-06 06:09:13.226324938 +0000
+ Birth: -
+  File: Test/2
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310813     Links: 1
+Access: (0667/-rw-rw-rwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:35.074330266 +0000
+Modify: 2025-02-06 06:06:35.074330266 +0000
+Change: 2025-02-06 06:09:13.226324938 +0000
+ Birth: -
+  File: Test/3
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+Device: 704h/1796d      Inode: 1310814     Links: 1
+Access: (0667/-rw-rw-rwx)  Uid: ( 1000/codespace)   Gid: ( 1000/codespace)
+Access: 2025-02-06 06:06:38.230330159 +0000
+Modify: 2025-02-06 06:06:38.230330159 +0000
+Change: 2025-02-06 06:09:13.226324938 +0000
+ Birth: -
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sude useradd u2
+bash: sude: command not found
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo useradd u2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ vim /etc/passwd
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo usermod -l u2
+Usage: usermod [options] LOGIN
+
+Options:
+  -b, --badnames                allow bad names
+  -c, --comment COMMENT         new value of the GECOS field
+  -d, --home HOME_DIR           new home directory for the user account
+  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
+  -f, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -g, --gid GROUP               force use GROUP as new primary group
+  -G, --groups GROUPS           new list of supplementary GROUPS
+  -a, --append                  append the user to the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                the user from other groups
+  -h, --help                    display this help message and exit
+  -l, --login NEW_LOGIN         new value of the login name
+  -L, --lock                    lock the user account
+  -m, --move-home               move contents of the home directory to the
+                                new location (use only with -d)
+  -o, --non-unique              allow using duplicate (non-unique) UID
+  -p, --password PASSWORD       use encrypted password for the new password
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell SHELL             new login shell for the user account
+  -u, --uid UID                 new UID for the user account
+  -U, --unlock                  unlock the user account
+  -v, --add-subuids FIRST-LAST  add range of subordinate uids
+  -V, --del-subuids FIRST-LAST  remove range of subordinate uids
+  -w, --add-subgids FIRST-LAST  add range of subordinate gids
+  -W, --del-subgids FIRST-LAST  remove range of subordinate gids
+  -Z, --selinux-user SEUSER     new SELinux user mapping for the user account
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo vim /etc/shadow
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo usermod -L u2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo usermod -U u2
+usermod: unlocking the user's password would result in a passwordless account.
+You should set a password with usermod -p to unlock this user's password.
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo passwd u2
+New password: 
+Retype new password: 
+passwd: password updated successfully
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo groupadd group1
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo groupadd group2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo passwd group1
+passwd: user 'group1' does not exist
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo gpasswd group1
+Changing the password for group group1
+New Password: 
+Re-enter new password: 
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo gpasswd group2
+Changing the password for group group2
+New Password: 
+Re-enter new password: 
+@pudgevmid ➜ /workspaces/-02.01 (main) $ newgrp group1
+Password: 
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat group1
+stat: cannot stat 'group1': No such file or directory
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo usermod -G group u2
+usermod: group 'group' does not exist
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo usermod -G group1 u2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ ls Test
+1  2  3
+@pudgevmid ➜ /workspaces/-02.01 (main) $ su u2
+Password: 
+$ su pudgevmid
+su: user pudgevmid does not exist
+$ exit
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo chage u2
+Changing the aging information for u2
+Enter the new value, or press ENTER for the default
+
+        Minimum Password Age [0]: 1
+        Maximum Password Age [99999]: 44444
+        Last Password Change (YYYY-MM-DD) [2025-02-06]: 1234
+        Password Expiration Warning [7]: 7
+        Password Inactive [-1]: 9999
+        Account Expiration Date (YYYY-MM-DD) [-1]: 228
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo vim /etc/passwd
+@pudgevmid ➜ /workspaces/-02.01 (main) $ stat /etc/shadow
+  File: /etc/shadow
+  Size: 837             Blocks: 8          IO Block: 4096   regular file
+Device: 2eh/46d Inode: 1188310     Links: 1
+Access: (0640/-rw-r-----)  Uid: (    0/    root)   Gid: (   42/  shadow)
+Access: 2025-02-06 06:19:31.630304107 +0000
+Modify: 2025-02-06 06:19:14.154304695 +0000
+Change: 2025-02-06 06:19:14.154304695 +0000
+ Birth: -
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo chown Test/* u2
+chown: invalid user: ‘Test/1’
+@pudgevmid ➜ /workspaces/-02.01 (main) $ sudo chown u2 Test/*
