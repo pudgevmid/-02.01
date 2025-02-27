@@ -1,0 +1,151 @@
+Switch 0
+
+Switch(config)#vlan 2
+Switch(config-vlan)# name VLAN1
+Switch(config-vlan)#vlan 3
+Switch(config-vlan)# name VLAN2
+Switch(config-vlan)#
+Switch(config-vlan)#end
+
+
+Switch(config-if)#switchport access vlan 2
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#interface FastEthernet0/2
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#
+Switch(config)#interface FastEthernet0/1
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#interface FastEthernet0/2
+
+Switch(config)#interface FastEthernet0/2
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#interface FastEthernet0/1
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#interface FastEthernet0/1
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#interface GigabitEthernet0/1
+Switch(config-if)#
+Switch(config-if)#switchport mode trunk
+
+Router 1
+
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int gig0/0/0
+Router(config-if)#ip nat inside
+Router(config-if)#int gig0/0/1
+Router(config-if)#ip nat outside
+Router(config-if)#ip nat outside 
+Router(config-if)#ip ac
+% Incomplete command.
+Router(config-if)#ip ac
+% Incomplete command.
+Router(config-if)#ip ac
+Router(config-if)#ip access-l
+Router(config-if)#ip access-list st NAT 
+Router(config-if)#ip access-list st NAT 
+Router(config-std-nacl)#permit 192.168.
+
+ip dhcp pool intnet
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.254
+ip dhcp pool intnet2
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.254
+
+interface GigabitEthernet0/0/0
+ ip address 10.0.2.15 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ ip nat outside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.2
+ encapsulation dot1Q 2
+ ip address 192.168.2.254 255.255.255.0
+!
+interface GigabitEthernet0/0/1.3
+ encapsulation dot1Q 3
+ ip address 192.168.3.254 255.255.255.0
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list NAT interface GigabitEthernet0/0/0 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.0.2.16 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard NAT
+ permit 192.168.0.0 0.0.0.255
+ permit 192.168.3.0 0.0.0.255
+
+Router(config-if)#no ip nat ou
+Router(config-if)#no ip nat outside 
+Router(config-if)#int gi0/0/1.2
+Router(config-subif)#ip nat ins
+Router(config-subif)#ip nat inside 
+Router(config-subif)#int gi0/0/1.3
+Router(config-subif)#ip nat inside 
+Router(config-subif)#int gi0/0/0
+Router(config-if)#ip nat ou
+Router(config-if)#ip nat outside 
+
+Router 0
+
+Line protocol on Interface GigabitEthernet0/0/0, changed statinterface GigabitEthernet0/0/0inido ping 10.2.0.15
+
+#interface GigabitEthernet0/0/0
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/1
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/2
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/1
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/0
+Router(config-if)#
+Router(config-if)#do ping 10.0.2.15
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.2.15, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+Router(config-if)#do ping 210.210.0.2
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 210.210.0.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+
