@@ -1,0 +1,465 @@
+u05@u05-VirtualBox:~$ sudo systemctl status bind9
+[sudo] пароль для u05: 
+Unit bind9.service could not be found.
+u05@u05-VirtualBox:~$ sudo systemctl status bind9
+Unit bind9.service could not be found.
+u05@u05-VirtualBox:~$ sudo apt install bind9 bind9utils bind9-doc -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  bind9-utils
+Предлагаемые пакеты:
+  bind-doc resolvconf
+Следующие НОВЫЕ пакеты будут установлены:
+  bind9 bind9-doc bind9-utils bind9utils
+Обновлено 0 пакетов, установлено 4 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+Необходимо скачать 3 634 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 9 512 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9-utils amd64 1:9.18.30-0ubuntu0.22.04.2 [162 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9 amd64 1:9.18.30-0ubuntu0.22.04.2 [261 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9-doc all 1:9.18.30-0ubuntu0.22.04.2 [3 207 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 bind9utils all 1:9.18.30-0ubuntu0.22.04.2 [3 926 B]
+Получено 3 634 kB за 3с (1 080 kB/s)       
+Выбор ранее не выбранного пакета bind9-utils.
+(Чтение базы данных … на данный момент установлено 180635 файлов и каталогов.)
+Подготовка к распаковке …/bind9-utils_1%3a9.18.30-0ubuntu0.22.04.2_amd64.deb …
+Распаковывается bind9-utils (1:9.18.30-0ubuntu0.22.04.2) …
+Выбор ранее не выбранного пакета bind9.
+Подготовка к распаковке …/bind9_1%3a9.18.30-0ubuntu0.22.04.2_amd64.deb …
+Распаковывается bind9 (1:9.18.30-0ubuntu0.22.04.2) …
+Выбор ранее не выбранного пакета bind9-doc.
+Подготовка к распаковке …/bind9-doc_1%3a9.18.30-0ubuntu0.22.04.2_all.deb …
+Распаковывается bind9-doc (1:9.18.30-0ubuntu0.22.04.2) …
+Выбор ранее не выбранного пакета bind9utils.
+Подготовка к распаковке …/bind9utils_1%3a9.18.30-0ubuntu0.22.04.2_all.deb …
+Распаковывается bind9utils (1:9.18.30-0ubuntu0.22.04.2) …
+Настраивается пакет bind9-doc (1:9.18.30-0ubuntu0.22.04.2) …
+Настраивается пакет bind9-utils (1:9.18.30-0ubuntu0.22.04.2) …
+Настраивается пакет bind9 (1:9.18.30-0ubuntu0.22.04.2) …
+Добавляется группа «bind» (GID 138) ...
+Готово.
+Добавляется системный пользователь «bind» (UID 130) ...
+Добавляется новый пользователь «bind» (UID 130) в группу «bind» ...
+Не создаётся домашний каталог «/var/cache/bind».
+wrote key file "/etc/bind/rndc.key"
+named-resolvconf.service is a disabled or a static unit, not starting it.
+Created symlink /etc/systemd/system/bind9.service → /lib/systemd/system/named.se
+rvice.
+Created symlink /etc/systemd/system/multi-user.target.wants/named.service → /lib
+/systemd/system/named.service.
+Настраивается пакет bind9utils (1:9.18.30-0ubuntu0.22.04.2) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для ufw (0.36.1-4ubuntu0.1) …
+u05@u05-VirtualBox:~$ sudo systemctl status bind9
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset:>
+     Active: active (running) since Fri 2025-03-07 12:41:22 +07; 37s ago
+       Docs: man:named(8)
+    Process: 2646 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUC>
+   Main PID: 2647 (named)
+      Tasks: 5 (limit: 2269)
+     Memory: 7.1M
+        CPU: 67ms
+     CGroup: /system.slice/named.service
+             └─2647 /usr/sbin/named -u bind
+
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: managed-keys-zone: Initializing aut>
+мар 07 12:41:22 u05-VirtualBox named[2647]: managed-keys-zone: Initializing aut>
+lines 1-22/22 (END)
+u05@u05-VirtualBox:~$ sudo systemctl start bind9
+u05@u05-VirtualBox:~$ sudo systemctl start bind9
+u05@u05-VirtualBox:~$ sudo systemctl start bind9
+u05@u05-VirtualBox:~$ sudo ufw allow 53/tcp
+Правила обновлены
+Правила обновлены (v6)
+u05@u05-VirtualBox:~$ sudo ufw allow 53/udp
+Правила обновлены
+Правила обновлены (v6)
+u05@u05-VirtualBox:~$ sudo nano /etc/bind/named.conf.options
+u05@u05-VirtualBox:~$ sudo nano /etc/bind/named.conf.options
+u05@u05-VirtualBox:~$ sudo nano /etc/bind/named.conf.options
+u05@u05-VirtualBox:~$ sudo named-checkconf
+u05@u05-VirtualBox:~$ sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+u05@u05-VirtualBox:~$ sudo systemctl status bind9
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset:>
+     Active: active (running) since Fri 2025-03-07 12:41:22 +07; 23min ago
+       Docs: man:named(8)
+    Process: 2646 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUC>
+   Main PID: 2647 (named)
+      Tasks: 5 (limit: 2269)
+     Memory: 7.1M
+        CPU: 85ms
+     CGroup: /system.slice/named.service
+             └─2647 /usr/sbin/named -u bind
+
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './DN>
+мар 07 12:41:22 u05-VirtualBox named[2647]: network unreachable resolving './NS>
+мар 07 12:41:22 u05-VirtualBox named[2647]: managed-keys-zone: Initializing aut>
+мар 07 12:41:22 u05-VirtualBox named[2647]: managed-keys-zone: Initializing aut>
+lines 1-22/22 (END)
+u05@u05-VirtualBox:~$ sudo systemctl restart bind9
+u05@u05-VirtualBox:~$ sudo systemctl status bind9
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset:>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUC>
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zo>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zo>
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: >
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCC>
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNS>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zon>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zon>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: e>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCE>
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSK>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSK>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSK>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSK>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: en>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCES>
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKE>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKE>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKE>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKE>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone >
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone >
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: ena>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone .>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone .>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enab>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . >
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . >
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabl>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/I>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . i>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . i>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enable>
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN'>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is >
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is >
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 200>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 200>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 200>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN':>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 200>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is n>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is n>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': >
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is no>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is no>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 2>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is now>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is now>
+~
+lines 1-22/22 (END)
+
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/lib/systemd/system/named.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 13:05:14 +07; 2s ago
+       Docs: man:named(8)
+    Process: 3416 ExecStart=/usr/sbin/named $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 3420 (named)
+      Tasks: 4 (limit: 2269)
+     Memory: 5.4M
+        CPU: 55ms
+     CGroup: /system.slice/named.service
+             └─3420 /usr/sbin/named -u bind
+
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:7>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:5>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:5>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './DNSKEY/IN': 20>
+мар 07 13:05:14 u05-VirtualBox named[3420]: network unreachable resolving './NS/IN': 2001:5>
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 20326 for zone . is now >
+мар 07 13:05:14 u05-VirtualBox named[3420]: managed-keys-zone: Key 38696 for zone . is now >
+~
+u05@u05-VirtualBox:~$ dig mail.ru
+
+; <<>> DiG 9.18.30-0ubuntu0.22.04.2-Ubuntu <<>> mail.ru
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 30270
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;mail.ru.			IN	A
+
+;; ANSWER SECTION:
+mail.ru.		86088	IN	A	217.69.139.202
+mail.ru.		86088	IN	A	217.69.139.200
+mail.ru.		86088	IN	A	94.100.180.201
+mail.ru.		86088	IN	A	94.100.180.200
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Mar 07 13:06:49 +07 2025
+;; MSG SIZE  rcvd: 100
