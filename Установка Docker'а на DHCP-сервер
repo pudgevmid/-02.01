@@ -1,0 +1,1022 @@
+u05@u05-VirtualBox:~$ sudo apt update
+[sudo] пароль для u05: 
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease            
+Сущ:4 http://security.ubuntu.com/ubuntu jammy-security InRelease               
+Чтение списков пакетов… Готово            
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлён 1 пакет. Запустите «apt list --upgradable» для показа.
+u05@u05-VirtualBox:~$ sudo apt install curl software-properties-common ca-certificates apt-transport-https -y curl -fsSL
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет ca-certificates самой новой версии (20240203~22.04.1).
+ca-certificates помечен как установленный вручную.
+Уже установлен пакет software-properties-common самой новой версии (0.99.22.9).
+software-properties-common помечен как установленный вручную.
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Для их удаления используйте «sudo apt autoremove».
+Следующие НОВЫЕ пакеты будут установлены:
+  apt-transport-https curl
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 1 пакетов не обновлено.
+Inst apt-transport-https (2.4.13 Ubuntu:22.04/jammy-updates [all])
+Inst curl (7.81.0-1ubuntu1.20 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf apt-transport-https (2.4.13 Ubuntu:22.04/jammy-updates [all])
+Conf curl (7.81.0-1ubuntu1.20 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add-
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Usage: apt-key [--keyring file] [command] [arguments]
+
+Manage apt's list of trusted keys
+
+  apt-key add <file>          - add the key contained in <file> ('-' for stdin)
+  apt-key del <keyid>         - remove the key <keyid>
+  apt-key export <keyid>      - output the key <keyid>
+  apt-key exportall           - output all trusted keys
+  apt-key update              - update keys using the keyring package
+  apt-key net-update          - update keys using the network
+  apt-key list                - list keys
+  apt-key finger              - list fingerprints
+  apt-key adv                 - pass advanced options to gpg (download key)
+
+If no specific keyring file is given the command applies to all keyring files.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add-
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Usage: apt-key [--keyring file] [command] [arguments]
+
+Manage apt's list of trusted keys
+
+  apt-key add <file>          - add the key contained in <file> ('-' for stdin)
+  apt-key del <keyid>         - remove the key <keyid>
+  apt-key export <keyid>      - output the key <keyid>
+  apt-key exportall           - output all trusted keys
+  apt-key update              - update keys using the keyring package
+  apt-key net-update          - update keys using the network
+  apt-key list                - list keys
+  apt-key finger              - list fingerprints
+  apt-key adv                 - pass advanced options to gpg (download key)
+
+If no specific keyring file is given the command applies to all keyring files.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add-
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Usage: apt-key [--keyring file] [command] [arguments]
+
+Manage apt's list of trusted keys
+
+  apt-key add <file>          - add the key contained in <file> ('-' for stdin)
+  apt-key del <keyid>         - remove the key <keyid>
+  apt-key export <keyid>      - output the key <keyid>
+  apt-key exportall           - output all trusted keys
+  apt-key update              - update keys using the keyring package
+  apt-key net-update          - update keys using the network
+  apt-key list                - list keys
+  apt-key finger              - list fingerprints
+  apt-key adv                 - pass advanced options to gpg (download key)
+
+If no specific keyring file is given the command applies to all keyring files.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add ~
+bash: https://download.docker.com/linux/ubuntu/gpg: Нет такого файла или каталога
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+gpg: /home/u05: read error: Это каталог
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+Команда «curl» не найдена, но может быть установлена с помощью:
+sudo snap install curl  # version 8.12.1, or
+sudo apt  install curl  # version 7.81.0-1ubuntu1.18
+См. 'snap info curl', чтобы посмотреть дополнительные версии.
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+Команда «curl» не найдена, но может быть установлена с помощью:
+sudo snap install curl  # version 8.12.1, or
+sudo apt  install curl  # version 7.81.0-1ubuntu1.18
+См. 'snap info curl', чтобы посмотреть дополнительные версии.
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add-
+Usage: apt-key [--keyring file] [command] [arguments]
+
+Manage apt's list of trusted keys
+
+  apt-key add <file>          - add the key contained in <file> ('-' for stdin)
+  apt-key del <keyid>         - remove the key <keyid>
+  apt-key export <keyid>      - output the key <keyid>
+  apt-key exportall           - output all trusted keys
+  apt-key update              - update keys using the keyring package
+  apt-key net-update          - update keys using the network
+  apt-key list                - list keys
+  apt-key finger              - list fingerprints
+  apt-key adv                 - pass advanced options to gpg (download key)
+
+If no specific keyring file is given the command applies to all keyring files.
+Команда «curl» не найдена, но может быть установлена с помощью:
+sudo snap install curl  # version 8.12.1, or
+sudo apt  install curl  # version 7.81.0-1ubuntu1.18
+См. 'snap info curl', чтобы посмотреть дополнительные версии.
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add-
+Usage: apt-key [--keyring file] [command] [arguments]
+
+Manage apt's list of trusted keys
+
+  apt-key add <file>          - add the key contained in <file> ('-' for stdin)
+  apt-key del <keyid>         - remove the key <keyid>
+  apt-key export <keyid>      - output the key <keyid>
+  apt-key exportall           - output all trusted keys
+  apt-key update              - update keys using the keyring package
+  apt-key net-update          - update keys using the network
+  apt-key list                - list keys
+  apt-key finger              - list fingerprints
+  apt-key adv                 - pass advanced options to gpg (download key)
+
+If no specific keyring file is given the command applies to all keyring files.
+Команда «curl» не найдена, но может быть установлена с помощью:
+sudo snap install curl  # version 8.12.1, or
+sudo apt  install curl  # version 7.81.0-1ubuntu1.18
+См. 'snap info curl', чтобы посмотреть дополнительные версии.
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+Команда «curl» не найдена, но может быть установлена с помощью:
+sudo snap install curl  # version 8.12.1, or
+sudo apt  install curl  # version 7.81.0-1ubuntu1.18
+См. 'snap info curl', чтобы посмотреть дополнительные версии.
+gpg: не найдено данных формата OpenPGP.
+u05@u05-VirtualBox:~$ sudo apt install curl software-properties-common ca-certificates apt-transport-https
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет ca-certificates самой новой версии (20240203~22.04.1).
+ca-certificates помечен как установленный вручную.
+Уже установлен пакет software-properties-common самой новой версии (0.99.22.9).
+software-properties-common помечен как установленный вручную.
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Для их удаления используйте «sudo apt autoremove».
+Следующие НОВЫЕ пакеты будут установлены:
+  apt-transport-https curl
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 1 пакетов не обновлено.
+Необходимо скачать 196 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 625 kB.
+Хотите продолжить? [Д/н] y
+Прервано.
+u05@u05-VirtualBox:~$ sudo apt install curl software-properties-common ca-certificates apt-transport-https -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет ca-certificates самой новой версии (20240203~22.04.1).
+ca-certificates помечен как установленный вручную.
+Уже установлен пакет software-properties-common самой новой версии (0.99.22.9).
+software-properties-common помечен как установленный вручную.
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Для их удаления используйте «sudo apt autoremove».
+Следующие НОВЫЕ пакеты будут установлены:
+  apt-transport-https curl
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 1 пакетов не обновлено.
+Необходимо скачать 196 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 625 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.13 [1 510 B]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.20 [194 kB]
+Получено 196 kB за 0с (446 kB/s)           
+Выбор ранее не выбранного пакета apt-transport-https.
+(Чтение базы данных … на данный момент установлено 180786 файлов и каталогов.)
+Подготовка к распаковке …/apt-transport-https_2.4.13_all.deb …
+Распаковывается apt-transport-https (2.4.13) …
+Выбор ранее не выбранного пакета curl.
+Подготовка к распаковке …/curl_7.81.0-1ubuntu1.20_amd64.deb …
+Распаковывается curl (7.81.0-1ubuntu1.20) …
+Настраивается пакет apt-transport-https (2.4.13) …
+Настраивается пакет curl (7.81.0-1ubuntu1.20) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+u05@u05-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+u05@u05-VirtualBox:~$ sudo add-apt-repository "bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable" 
+Unable to handle repository shortcut 'bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable'
+u05@u05-VirtualBox:~$ sudo add-apt-repository "bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable" 
+Unable to handle repository shortcut 'bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable'
+u05@u05-VirtualBox:~$ sudo add-apt-repository "bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable" 
+Unable to handle repository shortcut 'bed [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable'
+u05@u05-VirtualBox:~$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable" 
+Репозиторий: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable'
+Описание:
+Archive for codename: jammy components: stable
+Дополнительные сведения: https://download.docker.com/linux/ubuntu
+Добавление репозитория.
+Нажмите [ENTER] для продолжения или Ctrl-C для отмены.
+Adding deb entry to /etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease              
+Сущ:3 http://security.ubuntu.com/ubuntu jammy-security InRelease               
+Сущ:4 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease            
+Пол:5 https://download.docker.com/linux/ubuntu jammy InRelease [48,8 kB]       
+Пол:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [45,7 kB]
+Получено 94,5 kB за 1с (78,9 kB/s)  
+Чтение списков пакетов… Готово
+W: https://download.docker.com/linux/ubuntu/dists/jammy/InRelease: Ключ хранится в унаследованной связке ключей trusted.gpg (/etc/apt/trusted.gpg), подробности см. в разделе DEPRECATION в apt-key(8).
+u05@u05-VirtualBox:~$ sudo apt update
+Сущ:1 http://security.ubuntu.com/ubuntu jammy-security InRelease               
+Сущ:2 https://download.docker.com/linux/ubuntu jammy InRelease                 
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy InRelease                      
+Пол:4 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Сущ:5 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Получено 128 kB за 4с (30,0 kB/s)
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлён 1 пакет. Запустите «apt list --upgradable» для показа.
+W: https://download.docker.com/linux/ubuntu/dists/jammy/InRelease: Ключ хранится в унаследованной связке ключей trusted.gpg (/etc/apt/trusted.gpg), подробности см. в разделе DEPRECATION в apt-key(8).
+u05@u05-VirtualBox:~$ sudo apt install docker-ce -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libwpe-1.0-1 libwpebackend-fdo-1.0-1
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  containerd.io docker-buildx-plugin docker-ce-cli docker-ce-rootless-extras
+  docker-compose-plugin git git-man liberror-perl libslirp0 pigz slirp4netns
+Предлагаемые пакеты:
+  cgroupfs-mount | cgroup-lite git-daemon-run | git-daemon-sysvinit git-doc
+  git-email git-gui gitk gitweb git-cvs git-mediawiki git-svn
+Следующие НОВЫЕ пакеты будут установлены:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli
+  docker-ce-rootless-extras docker-compose-plugin git git-man liberror-perl
+  libslirp0 pigz slirp4netns
+Обновлено 0 пакетов, установлено 12 новых пакетов, для удаления отмечено 0 пакетов, и 1 пакетов не обновлено.
+Необходимо скачать 124 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 458 MB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63,6 kB]
+Пол:2 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 1.7.25-1 [29,6 MB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 liberror-perl all 0.17029-1 [26,5 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 git-man all 1:2.34.1-1ubuntu1.12 [955 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 git amd64 1:2.34.1-1ubuntu1.12 [3 165 kB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 libslirp0 amd64 4.6.1-1build1 [61,5 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 slirp4netns amd64 1.0.1-2 [28,2 kB]
+Пол:8 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.21.1-1~ubuntu.22.04~jammy [35,3 MB]
+Пол:9 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:28.0.1-1~ubuntu.22.04~jammy [15,7 MB]
+Пол:10 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:28.0.1-1~ubuntu.22.04~jammy [19,1 MB]
+Пол:11 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:28.0.1-1~ubuntu.22.04~jammy [6 086 kB]
+Пол:12 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 2.33.1-1~ubuntu.22.04~jammy [14,0 MB]
+Получено 124 MB за 22с (5 654 kB/s)                                            
+Выбор ранее не выбранного пакета pigz.
+(Чтение базы данных … на данный момент установлено 180797 файлов и каталогов.)
+Подготовка к распаковке …/00-pigz_2.6-1_amd64.deb …
+Распаковывается pigz (2.6-1) …
+Выбор ранее не выбранного пакета containerd.io.
+Подготовка к распаковке …/01-containerd.io_1.7.25-1_amd64.deb …
+Распаковывается containerd.io (1.7.25-1) …
+Выбор ранее не выбранного пакета docker-buildx-plugin.
+Подготовка к распаковке …/02-docker-buildx-plugin_0.21.1-1~ubuntu.22.04~jammy_am
+d64.deb …
+Распаковывается docker-buildx-plugin (0.21.1-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce-cli.
+Подготовка к распаковке …/03-docker-ce-cli_5%3a28.0.1-1~ubuntu.22.04~jammy_amd64
+.deb …
+Распаковывается docker-ce-cli (5:28.0.1-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce.
+Подготовка к распаковке …/04-docker-ce_5%3a28.0.1-1~ubuntu.22.04~jammy_amd64.deb
+ …
+Распаковывается docker-ce (5:28.0.1-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce-rootless-extras.
+Подготовка к распаковке …/05-docker-ce-rootless-extras_5%3a28.0.1-1~ubuntu.22.04
+~jammy_amd64.deb …
+Распаковывается docker-ce-rootless-extras (5:28.0.1-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-compose-plugin.
+Подготовка к распаковке …/06-docker-compose-plugin_2.33.1-1~ubuntu.22.04~jammy_a
+md64.deb …
+Распаковывается docker-compose-plugin (2.33.1-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета liberror-perl.
+Подготовка к распаковке …/07-liberror-perl_0.17029-1_all.deb …
+Распаковывается liberror-perl (0.17029-1) …
+Выбор ранее не выбранного пакета git-man.
+Подготовка к распаковке …/08-git-man_1%3a2.34.1-1ubuntu1.12_all.deb …
+Распаковывается git-man (1:2.34.1-1ubuntu1.12) …
+Выбор ранее не выбранного пакета git.
+Подготовка к распаковке …/09-git_1%3a2.34.1-1ubuntu1.12_amd64.deb …
+Распаковывается git (1:2.34.1-1ubuntu1.12) …
+Выбор ранее не выбранного пакета libslirp0:amd64.
+Подготовка к распаковке …/10-libslirp0_4.6.1-1build1_amd64.deb …
+Распаковывается libslirp0:amd64 (4.6.1-1build1) …
+Выбор ранее не выбранного пакета slirp4netns.
+Подготовка к распаковке …/11-slirp4netns_1.0.1-2_amd64.deb …
+Распаковывается slirp4netns (1.0.1-2) …
+Настраивается пакет liberror-perl (0.17029-1) …
+Настраивается пакет docker-buildx-plugin (0.21.1-1~ubuntu.22.04~jammy) …
+Настраивается пакет containerd.io (1.7.25-1) …
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service →
+ /lib/systemd/system/containerd.service.
+Настраивается пакет docker-compose-plugin (2.33.1-1~ubuntu.22.04~jammy) …
+Настраивается пакет docker-ce-cli (5:28.0.1-1~ubuntu.22.04~jammy) …
+Настраивается пакет libslirp0:amd64 (4.6.1-1build1) …
+Настраивается пакет pigz (2.6-1) …
+Настраивается пакет git-man (1:2.34.1-1ubuntu1.12) …
+Настраивается пакет docker-ce-rootless-extras (5:28.0.1-1~ubuntu.22.04~jammy) …
+Настраивается пакет slirp4netns (1.0.1-2) …
+Настраивается пакет docker-ce (5:28.0.1-1~ubuntu.22.04~jammy) …
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /li
+b/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/sy
+stemd/system/docker.socket.
+Настраивается пакет git (1:2.34.1-1ubuntu1.12) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.9) …
+u05@u05-VirtualBox:~$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset>
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/cont>
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.2016405>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.2017186>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.0198512>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.7688144>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.5154308>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.5168630>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.2191822>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.2457576>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.2458698>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container>
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset:>
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/conta>
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.20164053>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.20171862>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.01985127>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.76881449>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.51543089>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.51686306>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.21918229>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.24575766>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.24586988>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container >
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabl>
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.>
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:0>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:0>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:0>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:0>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:0>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:0>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:0>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:0>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:0>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" >
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" >
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" >
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" le>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" le>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" le>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" le>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" le>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" le>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" le>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" le>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" le>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" lev>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" lev>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" lev>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" lev>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" lev>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" lev>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" lev>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" lev>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" lev>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=inf>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=inf>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=inf>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=inf>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=inf>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=inf>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=inf>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=inf>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=inf>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info >
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info >
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info >
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info >
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info ms>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info ms>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info ms>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info ms>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info ms>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info ms>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info ms>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info ms>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info ms>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg=>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg=>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg=>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg=>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg=>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg=>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg=>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg=>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg=>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg=">
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg=">
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg=">
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg=">
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg=">
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg=">
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg=">
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg=">
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg=">
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OT>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="de>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Lo>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Lo>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Do>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="In>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Co>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Da>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="AP>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTE>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="det>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loa>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loa>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Doc>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Ini>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Com>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Dae>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="dete>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Load>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Load>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Dock>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Init>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Comp>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daem>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API >
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL t>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detect>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loadin>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loadin>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initia>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Comple>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API li>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL tra>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker d>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initiali>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Complete>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon h>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API list>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL trac>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected >
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading c>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading c>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker da>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initializ>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Completed>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon ha>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API liste>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL tracing is>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected 127.0.>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading contain>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading contain>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker daemon" >
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initializing bu>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Completed build>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon has comp>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API listen on />
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL tracing is >
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected 127.0.0>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading containe>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading containe>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker daemon" c>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initializing bui>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Completed buildk>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon has compl>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API listen on /r>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL tracing is n>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected 127.0.0.>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading container>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading container>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker daemon" co>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initializing buil>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Completed buildki>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon has comple>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API listen on /ru>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2025-03-07 14:17:17 +07; 1min 46s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 9784 (dockerd)
+      Tasks: 8
+     Memory: 31.8M
+        CPU: 468ms
+     CGroup: /system.slice/docker.service
+             └─9784 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201640533+07:00" level=info msg="OTEL tracing is no>
+мар 07 14:17:04 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:04.201718626+07:00" level=info msg="detected 127.0.0.5>
+мар 07 14:17:09 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:09.019851271+07:00" level=info msg="Loading containers>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:13.768814496+07:00" level=info msg="Loading containers>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.515430895+07:00" level=info msg="Docker daemon" com>
+мар 07 14:17:14 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:14.516863064+07:00" level=info msg="Initializing build>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.219182296+07:00" level=info msg="Completed buildkit>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245757663+07:00" level=info msg="Daemon has complet>
+мар 07 14:17:17 u05-VirtualBox dockerd[9784]: time="2025-03-07T14:17:17.245869882+07:00" level=info msg="API listen on /run>
+мар 07 14:17:17 u05-VirtualBox systemd[1]: Started Docker Application Container Engine.
+~
+lines 1-22/22 (END)
+u05@u05-VirtualBox:~$ sudo usermod -aG docker $USER
+u05@u05-VirtualBox:~$ newgrp docker
+u05@u05-VirtualBox:~$ docker
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Authenticate to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx
+  compose*    Docker Compose
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Swarm Commands:
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/home/u05/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/u05/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/u05/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/u05/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+For more help on how to use Docker, head to https://docs.docker.com/go/guides/
