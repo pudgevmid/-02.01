@@ -1,0 +1,195 @@
+Router1:
+
+interface GigabitEthernet0/0
+ ip address 10.10.2.15 255.255.255.0
+ ip nat outside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1.2
+ encapsulation dot1Q 2
+ ip address 192.168.2.254 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/1.3
+ encapsulation dot1Q 3
+ ip address 192.168.3.254 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/1.4
+ encapsulation dot1Q 4
+ ip address 192.168.4.254 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/1.5
+ encapsulation dot1Q 5
+ ip address 192.168.5.254 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip nat inside source list NAT interface GigabitEthernet0/0 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.10.2.16 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard NAT
+ permit 192.168.2.0 0.0.0.255
+ permit 192.168.3.0 0.0.0.255
+ permit 192.168.4.0 0.0.0.255
+
+Router>en
+Router#conf t 
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#
+Router(config)#ip acc
+Router(config)#ip access-list st NAT
+Router(config-std-nacl)#permit 192.168.2.0 0.0.0.255
+Router(config-std-nacl)#permit 192.168.3.0 0.0.0.255
+Router(config-std-nacl)#permit 192.168.4.0 0.0.0.255
+Router(config-std-nacl)#exit
+Router(config)#ac
+Router(config)#access-list ex OUTSIDE
+                           ^
+% Invalid input detected at '^' marker.
+	
+Router(config)#access-list ex
+Router(config)#access-list extended
+Router(config)#ip access-list extended OUTSIDE
+Router(config-ext-nacl)#deny ?
+  ahp    Authentication Header Protocol
+  eigrp  Cisco's EIGRP routing protocol
+  esp    Encapsulation Security Payload
+  gre    Cisco's GRE tunneling
+  icmp   Internet Control Message Protocol
+  ip     Any Internet Protocol
+  ospf   OSPF routing protocol
+  tcp    Transmission Control Protocol
+  udp    User Datagram Protocol
+Router(config-ext-nacl)#deny ip any 192.168.2.0 0.0.0.255
+Router(config-ext-nacl)#deny ip any 192.168.3.0 0.0.0.255
+Router(config-ext-nacl)#deny ip any 192.168.4.0 0.0.0.255
+Router(config-ext-nacl)#deny ip any 192.168.5.0 0.0.0.255
+Router(config-ext-nacl)#exit
+Router(config)#int gi0/0
+Router(config-if)#ip ac
+Router(config-if)#ip access-group ?
+  <1-199>  IP access list (standard or extended)
+  WORD     Access-list name
+Router(config-if)#ip access-group OUTSIDE?
+WORD  
+Router(config-if)#ip access-group OUTSIDE ?
+  in   inbound packets
+  out  outbound packets
+Router(config-if)#ip access-group OUTSIDE in
+Router(config-if)#no ip ac
+Router(config-if)#no ip access-group 
+Router(config-if)#no ip access-list
+Router(config-if)#no ip access-list ex
+Router(config-if)#no ip access-list extended OUTSIDE
+Router(config)#ip acc
+Router(config)#ip access-list extended OUTSIDE
+Router(config-ext-nacl)#permit ip any host 10.10.2.15
+
+
+
+Server1:
+
+Cisco Packet Tracer SERVER Command Line 1.0
+C:\>ping 192.168.4.1
+
+Pinging 192.168.4.1 with 32 bytes of data:
+
+Request timed out.
+Reply from 10.10.2.15: Destination host unreachable.
+Reply from 10.10.2.15: Destination host unreachable.
+Reply from 10.10.2.15: Destination host unreachable.
+
+Ping statistics for 192.168.4.1:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 192.168.4.1
+
+Pinging 192.168.4.1 with 32 bytes of data:
+
+Reply from 10.10.2.15: Destination host unreachable.
+Reply from 10.10.2.15: Destination host unreachable.
+Reply from 10.10.2.15: Destination host unreachable.
+Reply from 10.10.2.15: Destination host unreachable.
+
+Ping statistics for 192.168.4.1:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+
+
+PC0:
+
+Cisco Packet Tracer PC Command Line 1.0
+C:\>ping 192.168.5.1
+
+Pinging 192.168.5.1 with 32 bytes of data:
+
+Request timed out.
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+
+Ping statistics for 192.168.5.1:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 192.168.5.1
+
+Pinging 192.168.5.1 with 32 bytes of data:
+
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+Reply from 192.168.5.1: bytes=32 time=1ms TTL=127
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+Reply from 192.168.5.1: bytes=32 time<1ms TTL=127
+
+Ping statistics for 192.168.5.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>ping 210.210.0.2
+
+Pinging 210.210.0.2 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 210.210.0.2:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 210.210.0.2
+
+Pinging 210.210.0.2 with 32 bytes of data:
+
+Reply from 210.210.0.2: bytes=32 time<1ms TTL=126
+Reply from 210.210.0.2: bytes=32 time<1ms TTL=126
+Reply from 210.210.0.2: bytes=32 time<1ms TTL=126
+Reply from 210.210.0.2: bytes=32 time<1ms TTL=126
+
+Ping statistics for 210.210.0.2:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
