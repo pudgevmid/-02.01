@@ -1,0 +1,80 @@
+cd /use/bin
+cd 
+mkdir Sb
+cd Sb/
+touch 1
+touch 2
+touch 3
+(Установка sbit) 
+Stat 1
+sudo chmod u+s 1 (только для файлов) 
+stat 1
+sudo chmod a+x 1
+stat 1
+stat 2
+Sudo chmos a+x 2
+stat 2
+sudo chmod a+s 2
+stat 2
+sudo chmod g-s 2
+mkdir  F1
+mkdir F2
+mkdir F3
+sudo chmod g+s F1
+stat F1
+newgrp group1
+cd F1
+touch 1
+touch 2
+touch 3
+stat 1
+cd.. /F2
+touch 1 2 3 
+ls -l
+stat 1
+cd.. 
+Exit
+newgrp group1
+mkdir F4
+ls -l
+sudo chmod g-s F2
+ls -l
+newgrp group1 
+cd F2
+touch 5 
+stat 5
+mkdir F1
+stat F1
+ls -l
+exit
+sudo chown :group1 F3
+ls -l
+cd F3
+mkdir F5
+touch 5
+ls -l
+sticky-bit - бит  только на папки 
+sudo chmod o+t F2
+stat F2
+sudo chmod 777 F2
+stat F2
+cd F2
+touch f1 
+touch f2
+touch f3
+stat f1
+sudo chmod 666 f2
+stat f2
+vim f2  ("Информация от владельца файла") 
+sudo chmod 777 ../
+sudo chmod o+t  ../
+su u2
+touch f4
+stat f4
+vim u2 ("Владелец файла u2") 
+vim f2 ("Информация от пользоваля u2") 
+exit 
+ls -l
+exit
+hit add *
+gir comit -a -m "Эксперементы"
