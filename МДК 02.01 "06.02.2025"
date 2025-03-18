@@ -1,0 +1,62 @@
+Базовые операции:
+Чтение
+Запись
+Изменение, усечение 
+
+2 вида файлов:
+Последовательный доступ
+Произвольный доступ
+
+Логический уровень абстракции. 
+ИмяИмя
+Права доступа
+Слежка за размером
+Операции: создания файла, удаление файла
+Время создания файла. 
+
+Владелец файла 
+Группа владельцев
+Всё остальные
+
+stat 1.txt
+sudo chmod 777 1.txt
+star 1.txt
+sudo chmod o-x 1.txt
+stat 1.txt
+sudo chmod o+x 1.txt
+cd Test/
+touch 1
+touch 2
+touch 3
+cd.. 
+ls Test/total 0
+sudo chmod o-w Test/*
+Ls -l Test/total 0
+sudo chmod u+x Test
+sudo chown :u1 Test 
+Stat Test/
+sudo chown u1:codespace Test
+stat Test/
+vim /etc/passwd
+vim /etc/shadow
+stat /etc/shadow
+sudo vim /etc/shadow
+sudo chage u1
+sudo useradd -m -s /bin/bash u2 
+sudo usermod -G group u2
+sudo userdel u2
+sudo usermod -L u2
+sudo usermod -U u2
+sudo groupadd group1 
+sudo groupadd group2
+sudo passwd u2
+sudo gpasswd group1
+touch Test/f1
+sudo chmod 775 Test
+touch Test/f1
+newgrp group1
+touch Test/f2
+stat Test/f2
+sudo chmod 664 Test/f2
+su u2
+newgrp group1
