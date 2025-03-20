@@ -1,0 +1,666 @@
+1 Создать новый контейнер на базе ubuntu
+
+3 Фиксируем изменения в контейнере при помощи docker commit -m “…” -a “author”
+<id_container> <repository:tag>
+
+4 Смотрим docker history для полученного образа и копируем в отчёт
+docker history 1820aa58e58a
+
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+1820aa58e58a   5 minutes ago   /bin/bash                                       134MB     Добавили iproute2,ip-pingutils,dnsutils
+a04dc4851cbc   7 weeks ago     /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B        
+<missing>      7 weeks ago     /bin/sh -c #(nop) ADD file:6df775300d76441aa…   78.1MB    
+<missing>      7 weeks ago     /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B        
+<missing>      7 weeks ago     /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B        
+<missing>      7 weeks ago     /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B        
+<missing>      7 weeks ago     /bin/sh -c #(nop)  ARG RELEASE                  0B
+
+5 Смотрим docker inspect для полученного образа и копируем в отчёт
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker inspect 1820aa58e58a
+[
+    {
+        "Id": "sha256:1820aa58e58a6dcdadacc34573f6607693033dc24e979145027860c0d08ba111",
+        "RepoTags": [
+            "ubu220.4m3:latest"
+        ],
+        "RepoDigests": [],
+        "Parent": "sha256:a04dc4851cbcbb42b54d1f52a41f5f9eca6a5fd03748c3f6eb2cbeb238ca99bd",
+        "Comment": "Добавили iproute2,ip-pingutils,dnsutils",
+        "Created": "2025-03-20T06:23:48.772639122Z",
+        "DockerVersion": "27.3.1-1",
+        "Author": "sasha",
+        "Config": {
+            "Hostname": "0dfdaad22824",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": true,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": true,
+            "OpenStdin": true,
+            "StdinOnce": true,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "/bin/bash"
+            ],
+            "Image": "a04dc4851cbc",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "24.04"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 212514576,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/716762d187c21a5a622e49d3cbdaed742b37fd6238611b1d0aaac2eb0aeae35b/diff",
+                "MergedDir": "/var/lib/docker/overlay2/e2aa14813b1f4a97eda2b729552ce5c63a78edd786b08bd4ce83e3d37f1051ab/merged",
+                "UpperDir": "/var/lib/docker/overlay2/e2aa14813b1f4a97eda2b729552ce5c63a78edd786b08bd4ce83e3d37f1051ab/diff",
+                "WorkDir": "/var/lib/docker/overlay2/e2aa14813b1f4a97eda2b729552ce5c63a78edd786b08bd4ce83e3d37f1051ab/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:4b7c01ed0534d4f9be9cf97d068da1598c6c20b26cb6134fad066defdb6d541d",
+                "sha256:df7911c23915c6b7dc04269a99e0237901e7148453b032cb48085d84ef2b58ac"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2025-03-20T06:23:48.776300743Z"
+        }
+    }
+]
+
+6 На базе образа создаём новый контейнер, добавляем в него клиенты mysql, postgresql
+apt install mysql-client, apt install postgresql-client(?)
+
+root@213b992e73c3:/# apt install mysql-client
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  mysql-client-8.0 mysql-client-core-8.0 mysql-common
+The following NEW packages will be installed:
+  mysql-client mysql-client-8.0 mysql-client-core-8.0 mysql-common
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2765 kB of archives.
+After this operation, 61.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mysql-client-core-8.0 amd64 8.0.41-0ubuntu0.24.04.1 [2727 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble/main amd64 mysql-common all 5.8+1.1.0build1 [6746 B]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mysql-client-8.0 amd64 8.0.41-0ubuntu0.24.04.1 [22.4 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mysql-client all 8.0.41-0ubuntu0.24.04.1 [9412 B]
+Fetched 2765 kB in 0s (13.9 MB/s)           
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package mysql-client-core-8.0.
+(Reading database ... 4790 files and directories currently installed.)
+Preparing to unpack .../mysql-client-core-8.0_8.0.41-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking mysql-client-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Selecting previously unselected package mysql-common.
+Preparing to unpack .../mysql-common_5.8+1.1.0build1_all.deb ...
+Unpacking mysql-common (5.8+1.1.0build1) ...
+Selecting previously unselected package mysql-client-8.0.
+Preparing to unpack .../mysql-client-8.0_8.0.41-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking mysql-client-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Selecting previously unselected package mysql-client.
+Preparing to unpack .../mysql-client_8.0.41-0ubuntu0.24.04.1_all.deb ...
+Unpacking mysql-client (8.0.41-0ubuntu0.24.04.1) ...
+Setting up mysql-common (5.8+1.1.0build1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up mysql-client-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Setting up mysql-client-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Setting up mysql-client (8.0.41-0ubuntu0.24.04.1) ...
+
+root@213b992e73c3:/# apt install postgresql-client   
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libgdbm-compat4t64 libgdbm6t64 libldap-common libldap2 libperl5.38t64 libpq5
+  libreadline8t64 libsasl2-2 libsasl2-modules libsasl2-modules-db netbase perl
+  perl-modules-5.38 postgresql-client-16 postgresql-client-common readline-common
+Suggested packages:
+  gdbm-l10n libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal
+  libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql perl-doc
+  libterm-readline-gnu-perl | libterm-readline-perl-perl make
+  libtap-harness-archive-perl postgresql-16 postgresql-doc-16 readline-doc
+The following NEW packages will be installed:
+  libgdbm-compat4t64 libgdbm6t64 libldap-common libldap2 libperl5.38t64 libpq5
+  libreadline8t64 libsasl2-2 libsasl2-modules libsasl2-modules-db netbase perl
+  perl-modules-5.38 postgresql-client postgresql-client-16 postgresql-client-common
+  readline-common
+0 upgraded, 17 newly installed, 0 to remove and 0 not upgraded.
+Need to get 10.3 MB of archives.
+After this operation, 57.2 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl-modules-5.38 all 5.38.2-3.2build2.1 [3110 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm6t64 amd64 1.23-5.1build1 [34.4 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm-compat4t64 amd64 1.23-5.1build1 [6710 B]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libperl5.38t64 amd64 5.38.2-3.2build2.1 [4867 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl amd64 5.38.2-3.2build2.1 [231 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 readline-common all 8.2-4build1 [56.5 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 libreadline8t64 amd64 8.2-4build1 [153 kB]
+Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 netbase all 6.4 [13.1 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap-common all 2.6.7+dfsg-1~exp1ubuntu8.2 [31.7 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-5ubuntu3.1 [20.4 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-5ubuntu3.1 [53.2 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap2 amd64 2.6.7+dfsg-1~exp1ubuntu8.2 [196 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpq5 amd64 16.8-0ubuntu0.24.04.1 [142 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-modules amd64 2.1.28+dfsg1-5ubuntu3.1 [69.9 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-client-common all 257build1.1 [36.4 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-client-16 amd64 16.8-0ubuntu0.24.04.1 [1292 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 postgresql-client all 16+257build1.1 [11.6 kB]
+Fetched 10.3 MB in 1s (8650 kB/s)               
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package perl-modules-5.38.
+(Reading database ... 4847 files and directories currently installed.)
+Preparing to unpack .../00-perl-modules-5.38_5.38.2-3.2build2.1_all.deb ...
+Unpacking perl-modules-5.38 (5.38.2-3.2build2.1) ...
+Selecting previously unselected package libgdbm6t64:amd64.
+Preparing to unpack .../01-libgdbm6t64_1.23-5.1build1_amd64.deb ...
+Unpacking libgdbm6t64:amd64 (1.23-5.1build1) ...
+Selecting previously unselected package libgdbm-compat4t64:amd64.
+Preparing to unpack .../02-libgdbm-compat4t64_1.23-5.1build1_amd64.deb ...
+Unpacking libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+Selecting previously unselected package libperl5.38t64:amd64.
+Preparing to unpack .../03-libperl5.38t64_5.38.2-3.2build2.1_amd64.deb ...
+Unpacking libperl5.38t64:amd64 (5.38.2-3.2build2.1) ...
+Selecting previously unselected package perl.
+Preparing to unpack .../04-perl_5.38.2-3.2build2.1_amd64.deb ...
+Unpacking perl (5.38.2-3.2build2.1) ...
+Selecting previously unselected package readline-common.
+Preparing to unpack .../05-readline-common_8.2-4build1_all.deb ...
+Unpacking readline-common (8.2-4build1) ...
+Selecting previously unselected package libreadline8t64:amd64.
+Preparing to unpack .../06-libreadline8t64_8.2-4build1_amd64.deb ...
+Adding 'diversion of /lib/x86_64-linux-gnu/libhistory.so.8 to /lib/x86_64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libhistory.so.8.2 to /lib/x86_64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libreadline.so.8 to /lib/x86_64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/x86_64-linux-gnu/libreadline.so.8.2 to /lib/x86_64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'
+Unpacking libreadline8t64:amd64 (8.2-4build1) ...
+Selecting previously unselected package netbase.
+Preparing to unpack .../07-netbase_6.4_all.deb ...
+Unpacking netbase (6.4) ...
+Selecting previously unselected package libldap-common.
+Preparing to unpack .../08-libldap-common_2.6.7+dfsg-1~exp1ubuntu8.2_all.deb ...
+Unpacking libldap-common (2.6.7+dfsg-1~exp1ubuntu8.2) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Selecting previously unselected package libldap2:amd64.
+Preparing to unpack .../11-libldap2_2.6.7+dfsg-1~exp1ubuntu8.2_amd64.deb ...
+Unpacking libldap2:amd64 (2.6.7+dfsg-1~exp1ubuntu8.2) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../12-libpq5_16.8-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking libpq5:amd64 (16.8-0ubuntu0.24.04.1) ...
+Selecting previously unselected package libsasl2-modules:amd64.
+Preparing to unpack .../13-libsasl2-modules_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+Unpacking libsasl2-modules:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Selecting previously unselected package postgresql-client-common.
+Preparing to unpack .../14-postgresql-client-common_257build1.1_all.deb ...
+Unpacking postgresql-client-common (257build1.1) ...
+Selecting previously unselected package postgresql-client-16.
+Preparing to unpack .../15-postgresql-client-16_16.8-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking postgresql-client-16 (16.8-0ubuntu0.24.04.1) ...
+Selecting previously unselected package postgresql-client.
+Preparing to unpack .../16-postgresql-client_16+257build1.1_all.deb ...
+Unpacking postgresql-client (16+257build1.1) ...
+Setting up libgdbm6t64:amd64 (1.23-5.1build1) ...
+Setting up libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+Setting up libsasl2-modules:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Setting up libldap-common (2.6.7+dfsg-1~exp1ubuntu8.2) ...
+Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Setting up perl-modules-5.38 (5.38.2-3.2build2.1) ...
+Setting up libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Setting up netbase (6.4) ...
+Setting up libperl5.38t64:amd64 (5.38.2-3.2build2.1) ...
+Setting up readline-common (8.2-4build1) ...
+Setting up libldap2:amd64 (2.6.7+dfsg-1~exp1ubuntu8.2) ...
+Setting up libpq5:amd64 (16.8-0ubuntu0.24.04.1) ...
+Setting up perl (5.38.2-3.2build2.1) ...
+Setting up libreadline8t64:amd64 (8.2-4build1) ...
+Setting up postgresql-client-common (257build1.1) ...
+Setting up postgresql-client-16 (16.8-0ubuntu0.24.04.1) ...
+update-alternatives: using /usr/share/postgresql/16/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+Setting up postgresql-client (16+257build1.1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+
+7 Фиксируем изменения в контейнере при помощи docker commit -m “…” -a “author”
+<id_container> <repository:tag>
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker commit -m "Установили mysql, postgres" -a "sasha" 213b992e73c3 ubu220.4m4
+sha256:21cd4f42e8ba7bf75cd9561cbb6919e1cc23da1de76af47734cda52dbaa91273
+
+8 Запускаем контейнеры mysql и posgres из официальных образов
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker pull mysql
+Using default tag: latest
+latest: Pulling from library/mysql
+804bb8ae89de: Pull complete 
+1b515e7ceb69: Pull complete 
+eaa11c0a9f08: Pull complete 
+8d18181893b8: Pull complete 
+e0a910cc8604: Pull complete 
+bc0c792ca096: Pull complete 
+8d73d2a73425: Pull complete 
+4a7e00d873b9: Pull complete 
+27a2553d6a80: Pull complete 
+69e76254f502: Pull complete 
+Digest: sha256:9b9d0aab4860798acff13d2a0ece3bc26639fe18b83fa5cd3e3d0e16b3ed05dd
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker pull postgres
+Using default tag: latest
+latest: Pulling from library/postgres
+6e909acdb790: Pull complete 
+fec99121872b: Pull complete 
+133acbc970df: Pull complete 
+e02d97322fc6: Pull complete 
+db9643c6baf3: Pull complete 
+9bcedd9434e7: Pull complete 
+fc8982ec96d9: Pull complete 
+1824bd6b75d7: Pull complete 
+fbad2bf2d5e6: Pull complete 
+221788d72606: Pull complete 
+e5f43b682bc0: Pull complete 
+e7a2d9e24ab0: Pull complete 
+a96cb29b0d13: Pull complete 
+140970538145: Pull complete 
+Digest: sha256:7f29c02ba9eeff4de9a9f414d803faa0e6fe5e8d15ebe217e3e418c82e652b35
+Status: Downloaded newer image for postgres:latest
+docker.io/library/postgres:latest
+
+9 Запускаем новый контейнер на базе последнего образа с пробросом портов на 3306 (mysql)
+и на 5432 (postgres)
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+ubu220.4m4   latest    21cd4f42e8ba   6 minutes ago    330MB
+ubu220.4m3   latest    1820aa58e58a   23 minutes ago   213MB
+postgres     latest    76e3e031d245   3 weeks ago      438MB
+ubuntu       24.04     a04dc4851cbc   7 weeks ago      78.1MB
+mysql        latest    fa262c3a6564   8 weeks ago      797MB
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker run -e MYSQL_ROOT_PASSWORD=12345 -d mysql
+08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                 NAMES
+08ea88e1dd8b   mysql     "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   3306/tcp, 33060/tcp   unruffled_bohr
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker inspect 08ea88e1dd8b
+[
+    {
+        "Id": "08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f",
+        "Created": "2025-03-20T06:47:48.814954468Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "mysqld"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 14505,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-03-20T06:47:48.886072088Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:fa262c3a6564b46bbfebf1994f935c67fb48640604bf0159fab1dbc2523620fc",
+        "ResolvConfPath": "/var/lib/docker/containers/08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f/hostname",
+        "HostsPath": "/var/lib/docker/containers/08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f/hosts",
+        "LogPath": "/var/lib/docker/containers/08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f/08ea88e1dd8b0977ea7416df94d8578e21836f71e0e6ade874321eecc5c53c5f-json.log",
+        "Name": "/unruffled_bohr",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                47,
+                74
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/1f78ddd11fc5da408851c5bf046bb56f001b6a27d2b84308248b5c29d8e562fe-init/diff:/var/lib/docker/overlay2/98375b74d341abf3cd809425e6873d6f5fd45449aca5508d5d33d936716acd40/diff:/var/lib/docker/overlay2/39f7f9621f0b5d039b5af6f7b47be31045d699ca3f4e93c5fc698c827caca8e0/diff:/var/lib/docker/overlay2/9c4c3ce06992fae5e297a98e11e5347a4aa3d435c2a4db50b7a0c43b35d75cf6/diff:/var/lib/docker/overlay2/8cdae639cb68968dff2f43fe6212d4c5ba594135567301f9dbd76beb13c495d1/diff:/var/lib/docker/overlay2/5c85ba333df74cfe258724b2637e98be47cd4a9b289cbd8ce1c5e4d8c1aa5881/diff:/var/lib/docker/overlay2/1abb770f3941995cf3dae7634364342042e2e7bccf5773efb9bf88f6720cd9d1/diff:/var/lib/docker/overlay2/12de0b5d989901417d909a459b9cf5f615d9b7f97f4481ce64ac515f5a263d68/diff:/var/lib/docker/overlay2/09770ffca3d51243f6a119c9094b7ce1761f9e3d00383be28f7b200991c5e228/diff:/var/lib/docker/overlay2/618a406dc9987b5ed05879dd3e0d5ce8d519bce79c15f452b4d9dcd194bda304/diff:/var/lib/docker/overlay2/733f2376a3611b7869856e102b7dbbc6b1e32f16c55edc3a9a00740ca522a045/diff",
+                "MergedDir": "/var/lib/docker/overlay2/1f78ddd11fc5da408851c5bf046bb56f001b6a27d2b84308248b5c29d8e562fe/merged",
+                "UpperDir": "/var/lib/docker/overlay2/1f78ddd11fc5da408851c5bf046bb56f001b6a27d2b84308248b5c29d8e562fe/diff",
+                "WorkDir": "/var/lib/docker/overlay2/1f78ddd11fc5da408851c5bf046bb56f001b6a27d2b84308248b5c29d8e562fe/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "4da917456a3b8790e708a418eb2f131d9b18afa3a2d2bbf244b1cd0f29685542",
+                "Source": "/var/lib/docker/volumes/4da917456a3b8790e708a418eb2f131d9b18afa3a2d2bbf244b1cd0f29685542/_data",
+                "Destination": "/var/lib/mysql",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "08ea88e1dd8b",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "3306/tcp": {},
+                "33060/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MYSQL_ROOT_PASSWORD=12345",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.17",
+                "MYSQL_MAJOR=innovation",
+                "MYSQL_VERSION=9.2.0-1.el9",
+                "MYSQL_SHELL_VERSION=9.2.0-1.el9"
+            ],
+            "Cmd": [
+                "mysqld"
+            ],
+            "Image": "mysql",
+            "Volumes": {
+                "/var/lib/mysql": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "cf94460df3bf55808a028f08fdd6413216296f8ed96e34f69899792123d92d30",
+            "SandboxKey": "/var/run/docker/netns/cf94460df3bf",
+            "Ports": {
+                "3306/tcp": null,
+                "33060/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "d9d9493c4f68cad55e20c259e4a85a87b746d5c292c75c3fa308c4629ff0bfb2",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.2",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:02",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "02:42:ac:11:00:02",
+                    "DriverOpts": null,
+                    "NetworkID": "51bd85f640f3bbf4c084e979029d79479350f1becee6f594abfaba6d626418d5",
+                    "EndpointID": "d9d9493c4f68cad55e20c259e4a85a87b746d5c292c75c3fa308c4629ff0bfb2",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]
+
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker run -e POSTGRES_ROOT_PASSW
+ORD=12345 -d postgres
+ade88d7941db0198db74bab1f9efef324f52c8c802be548dc2c4b8f5cde7959f
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker inspect 76e3e031d245
+[
+    {
+        "Id": "sha256:76e3e031d245f3b1018ac3d56a65130a0b7b6c2a55c16b856445a9fb04ddefaf",
+        "RepoTags": [
+            "postgres:latest"
+        ],
+        "RepoDigests": [
+            "postgres@sha256:7f29c02ba9eeff4de9a9f414d803faa0e6fe5e8d15ebe217e3e418c82e652b35"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2025-02-27T00:53:12Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/17/bin",
+                "GOSU_VERSION=1.17",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=17",
+                "PG_VERSION=17.4-1.pgdg120+2",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Image": "",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": null,
+            "StopSignal": "SIGINT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 438330490,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/d241afbf83c7866879f192125ab3548f080b92b06cad15e0bcc877ad112d2534/diff:/var/lib/docker/overlay2/eab2e80b3402affdbedf0553e2587b0db714aa260531ffb6239de50e6b4f124b/diff:/var/lib/docker/overlay2/84ce06c46b8f72b11150c19257f5f6add7d47f9a30b82698caefb83905fc7f01/diff:/var/lib/docker/overlay2/c3b551b49e60a659f3254d82d7a6c85c88a4585f0319c743fd15c7fc3b09475b/diff:/var/lib/docker/overlay2/6faf33f67302e10c14c932d6b96ee48e1b06431aadf5d830c4424be7088e32d8/diff:/var/lib/docker/overlay2/367c308895b09331d7812abf7ba4968c4b4a860ca0d78bf0401f6c504000f19e/diff:/var/lib/docker/overlay2/6f4cf0fedb8e4045dd6a3b524325dccd6430e57148554232eca51599c9c3a84f/diff:/var/lib/docker/overlay2/42393ce10d6c927f578003626ee4b849f4f1ecfa20502284c125c47821c7d44b/diff:/var/lib/docker/overlay2/a828f00a45ca8d2a29a79133975fe12f3a3adbbafda890079f3ed82aa319e880/diff:/var/lib/docker/overlay2/09bd74f72abec99788c3f73188fe50050e1e3893580a0d744886437bb39ed17f/diff:/var/lib/docker/overlay2/897d711da3ea3ed92cd2f228351a87a79f2814a9defe42ac76403ce12adade70/diff:/var/lib/docker/overlay2/a4dc8c118217c0f56eabec6b001000eabe3928eccc61681ba0636b9d6b891479/diff:/var/lib/docker/overlay2/c10e16b08ccf63639cdc0bdd91d1aa7dda5bb32ad5337f3514d0e6d5f6caea4d/diff",
+                "MergedDir": "/var/lib/docker/overlay2/f69fc590d5d7e59d29ad33883ab5fa9e42ba29cd3d2c169d8df547103ab4fc44/merged",
+                "UpperDir": "/var/lib/docker/overlay2/f69fc590d5d7e59d29ad33883ab5fa9e42ba29cd3d2c169d8df547103ab4fc44/diff",
+                "WorkDir": "/var/lib/docker/overlay2/f69fc590d5d7e59d29ad33883ab5fa9e42ba29cd3d2c169d8df547103ab4fc44/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:1287fbecdfcce6ee8cf2436e5b9e9d86a4648db2d91080377d499737f1b307f3",
+                "sha256:5776d4faed0fe405016dfd241344ce3094a457f65929fd01b374122195ccfe34",
+                "sha256:59bcedcb4ae22aa513c384bf2774ef7e21219caeac364ce3b2dd80a5ea0ce4c3",
+                "sha256:09dd89e2cdcd780f34fe068ed492d7e61ce1df0bb220098005c9f3c02eb28116",
+                "sha256:8b1ae317b6bc41041850035f45c0b9615649059329fbf9f313cda9e2a5d3df7e",
+                "sha256:dfe9f3fd0686ac349cdfea6d4acf5e88041123585f6685cc4bddb03509446538",
+                "sha256:2fb24d4e773b34125ef788d74126e724002c770a40f0ad369fcb6563cfca02eb",
+                "sha256:d591edcde813f57a7ad1bbb4389d9f2b29a3104bb320fe4284f8ed846e9d1c46",
+                "sha256:a6b702df4be911f984d385cd475a697d38a4d7a7b0d2753eca7bdb2f881668e3",
+                "sha256:fbebdc4fcd4d430ef778b6583db4b7033a4ff8bb4d426f3a3da04bb4062916bc",
+                "sha256:267e48b82feab71b8c27e444520004df8989cf61032424e9c5690ad333ce8a74",
+                "sha256:ed19e4ee5c652d27ab6aaa24cf01126fa44ffcdbd465df0d4d30ada22d81d844",
+                "sha256:bbf5c49010d298539ef0fb67a5c76d063b1db06080a54c5d1fff736a03845f5c",
+                "sha256:37bc7adc61eb021aa84f3165dfe6f45795100690eb18356c9cb8424af532c39d"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
+
+9. При помощи клиентов подключаемся к серверам по именам контейнеров
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker run -it ubu220.4m4
+root@86cc7577b779:/# mysql -h 172.17.0.2
+ERROR 1045 (28000): Access denied for user 'root'@'172.17.0.3' (using password: NO)
+root@86cc7577b779:/# mysql -h 172.17.0.2 -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 9.2.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+mysql> create user 'sasha'@%' identified by '12345'
+mysql> create user 'sasha'@%' identified by '12345';
+mysql> create user 'sasha'@'%' identified by '12345';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
+| test1              |
++--------------------+
+6 rows in set (0.00 sec)
+
+
