@@ -1,0 +1,139 @@
+//создание томов
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume create vol1
+vol1
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume create vol2
+vol2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume ls
+DRIVER    VOLUME NAME
+local     vol1
+local     vol2
+
+//Просмотр информациии о томе
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume inspect vol1
+[
+    {
+        "CreatedAt": "2025-03-28T07:47:37Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/vol1/_data",
+        "Name": "vol1",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume inspect vol2
+[
+    {
+        "CreatedAt": "2025-03-28T07:47:45Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/vol2/_data",
+        "Name": "vol2",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+
+//удаление ненужных томов
+
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume prune
+WARNING! This will remove anonymous local volumes not used by at least one container.
+Are you sure you want to continue? [y/N] y
+Total reclaimed space: 0B
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker volume ls
+DRIVER    VOLUME NAME
+local     vol1
+local     vol2
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker run --mount type=volume,source=vol1,target=/home/vol1 --name myubuntu -it ubuntu:22.04
+Unable to find image 'ubuntu:22.04' locally
+22.04: Pulling from library/ubuntu
+9cb31e2e37ea: Pull complete 
+Digest: sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2
+Status: Downloaded newer image for ubuntu:22.04
+root@202dfcddda82:/# cd /home/vol1
+root@202dfcddda82:/home/vol1# ls -l
+total 0
+root@202dfcddda82:/home/vol1# cat > test_vol.txt
+Проверка работы тома "vol1"
+root@202dfcddda82:/home/vol1# cat > test_vol.txt
+Проверка работы тома "vol1"
+root@202dfcddda82:/home/vol1# cat test_vol.txt
+Проверка работы тома "vol1"
+root@202dfcddda82:/home/vol1#
+Проверка работы тома "vol1"
+root@202dfcddda82:/home/vol1# exit
+exit
+
+//Создание 2 контейнера с использхованием старого и нового тома (vol2)
+
+pudgevmid ➜ /workspaces/-02.01 (main) $ docker run --mount type=volume,source=vol1,target=/home/vol1 --mount type=volume,source=vol2,target=/home/vol2 --name myubuntu1 -it --rm ubuntu:22.04
+root@9e8f29f03df3:/#  cd /home/vol1
+root@9e8f29f03df3:/home/vol1# ls -l
+total 0
+-rw-r--r-- 1 root root 0 Mar 28 07:52 test_vol.txt
+root@9e8f29f03df3:/home/vol1# cat test_vol.txt
+root@9e8f29f03df3:/home/vol1# cat > test_vol2_myubuntu1.txt
+Проверка работы тома "vol1"
+root@9e8f29f03df3:/home/vol1# cat > test_vol2_myubuntu1.txt
+Проверяю работу
+root@9e8f29f03df3:/home/vol1# cd ../vol2
+root@9e8f29f03df3:/home/vol2# ls -l
+total 0
+root@9e8f29f03df3:/home/vol2# cd ../vol2
+root@9e8f29f03df3:/home/vol2# cp ../vol1/* ./
+root@9e8f29f03df3:/home/vol2# ls -l
+total 0
+-rw-r--r-- 1 root root 0 Mar 28 07:54 test_vol.txt
+-rw-r--r-- 1 root root 0 Mar 28 07:54 test_vol2_myubuntu1.txt
+@pudgevmid ➜ /workspaces/-02.01 (main) $ docker ps -a (контейнер с ключом --rm удалился после завершения работы)
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS                     PORTS     NAMES
+202dfcddda82   ubuntu:22.04   "/bin/bash"   6 minutes ago   Exited (0) 2 minutes ago             myubuntu
+@pudgevmid ➜ /workspaces/-02.01 (main) $ mkdir vol3
+@pudgevmid ➜ /workspaces/-02.01 (main) $ cd vol3
+@pudgevmid ➜ /workspaces/-02.01/vol3 (main) $ cat > message_to_container
+Привет от хостовой части контейнеру                                    
+Привет!!!!!!
+docker run --mount type=bind,source=.,target=/home/vol3 --mount type=volume,source=vol2,target=/home/vol2 --name myubuntu1 -it --rm ubuntu:22.04
+root@a37794f1cdd5:/# cd /home/vol3
+root@a37794f1cdd5:/home/vol3# ls -l
+total 4
+-rw-rw-rw- 1 1000 1000 68 Mar 28 07:56 message_to_container
+root@a37794f1cdd5:/home/vol3# cat message_to_container
+Привет от хостовой части контейнеру
+Привет!!!!!!
+root@a37794f1cdd5:/home/vol3# cd .
+root@a37794f1cdd5:/home/vol3# cd vol2
+bash: cd: vol2: No such file or directory
+root@a37794f1cdd5:/home/vol3# cd ..
+root@a37794f1cdd5:/home# cd vol2
+root@a37794f1cdd5:/home/vol2# ls -l
+total 0
+-rw-r--r-- 1 root root 0 Mar 28 07:54 test_vol.txt
+-rw-r--r-- 1 root root 0 Mar 28 07:54 test_vol2_myubuntu1.txt
+root@a37794f1cdd5:/home/vol2# exit
+exit
+
+@pudgevmid ➜ /workspaces/-02.01/vol3 (main) $ docker run -it --mount type=bind,source=.,target=/home/mnt --name cont1 --rm ubuntu:22.04
+root@e1646503c122:/# cd /home/mnt
+root@e1646503c122:/home/mnt# ls -l
+total 4
+-rw-rw-rw- 1 1000 1000 68 Mar 28 07:56 message_to_container
+root@e1646503c122:/home/mnt# cat message_to_container
+Привет от хостовой части контейнеру
+Привет!!!!!!
+root@e1646503c122:/home/mnt# cat > message_from_cont1
+Привет от контейнера cont1
+root@e1646503c122:/home/mnt# exit
+exit
+
+@pudgevmid ➜ /workspaces/-02.01/vol3 (main) $ ls -l
+total 4
+-rw-rw-rw- 1 root      root       0 Mar 28 08:00 message_from_cont1
+-rw-rw-rw- 1 codespace codespace 68 Mar 28 07:56 message_to_container
+@pudgevmid ➜ /workspaces/-02.01/vol3 (main) $ cat message_from_cont1
+Привет от контейнера cont1
+@pudgevmid ➜ /workspaces/-02.01/vol3 (main) $ cat message_to_container
+Привет от хостовой части контейнеру
+Привет!!!!!!
