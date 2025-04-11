@@ -1,0 +1,142 @@
+Docker сети
+docker system prune
+docker network ls
+ip a
+cat /etc/resolv.conf
+cat /etc/hosts
+docker network create -d bridge my_bridge
+docker network ls
+docker network inspect my_bridge
+docker run -itd --net my_bridge --name cont1 --rm alpine 
+docker ps
+docker exec cont1 ip a
+docker exec cont1 ping -c 4 172.18.0.1
+docker exec cont1 ping -c 4 172.17.0.1
+docker run -itd  --name cont_172.17 --rm alpine
+docker ps
+docker network inspect bridge
+docker network inspect my_bridge
+docker images
+docker exec cont_172.17 ping -c 4 172.17.0.1
+docker exec cont_172.17 ping -c 4 172.18.0.1
+docker exec cont_172.17 ping -c 4 172.18.0.2
+docker exec cont_172.17 nslookup gmail.com
+docker run -itd --name cont-172_17_2 -- rm alpine
+docker run -itd --name cont-172_17_2 -- rm alpine
+docker run -itd --name cont-172_18_2 -- rm alpine
+docker run -itd --net my_bridge --name cont2 --rm alpine
+docker exec cont_172_17 ping -c 4 cont2
+docker exec cont_172_17 ping -c 4 cont-172_17_2
+docker exec cont_172_17 cat /etc/hosts
+docker exec cont_172_17_2 cat /etc/hosts
+docker exec cont1 cat /etc/ hosts
+docker exec cont2 cat /etc/hosts
+docker network create -d bridge --subnet 192.168.1.0/24 --gateway 192.168.1.1 br_192_168
+docker network ls
+docker network inspect br_192_168
+docker run -itd --net br_192_168 --name cont_192_1 --rm alpine
+docker network inspect br_192_168
+docker run -itd --net br_192_168 --name cont_192_2 --rm alpine
+docker exec cont_192_1 cat /etc/hosts
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  ping -c 4 172.17.0.1
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  ping -c 4 192.168.1.1
+docker exec cont_192_1  ping -c 4 172.17.0.2
+docker exec cont_192_1  ping -c 4 172.18.0.2
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  traceroute mail.ru
+docker exec cont_192_1  traceroute 172.17.0.3
+ip a
+docker exec cont_192_1  ip a
+docker network connect my_bridge cont_192_2
+docker exec cont_192_2 ip a
+docker exec cont_192_2  traceroute 172.18.0.3
+docker network create -d bridge --subnet 192.168.2.0/25 --gateway 192.168.2.1 br_192_168_m25
+docker network create -d bridge --subnet 192.168.2.128/25 --gateway 192.168.2.1 br_192_168_m25
+docker network create -d bridge --subnet 192.168.2.128/25 --gateway 192.168.2.129 br_192_168_m25
+                                  Docker сети
+docker system prune
+docker network ls
+ip a
+cat /etc/resolv.conf
+cat /etc/hosts
+docker network create -d bridge my_bridge
+docker network ls
+docker network inspect my_bridge
+docker run -itd --net my_bridge --name cont1 --rm alpine 
+docker ps
+docker exec cont1 ip a
+docker exec cont1 ping -c 4 172.18.0.1
+docker exec cont1 ping -c 4 172.17.0.1
+docker run -itd  --name cont_172.17 --rm alpine
+docker ps
+docker network inspect bridge
+docker network inspect my_bridge
+docker images
+docker exec cont_172.17 ping -c 4 172.17.0.1
+docker exec cont_172.17 ping -c 4 172.18.0.1
+docker exec cont_172.17 ping -c 4 172.18.0.2
+docker exec cont_172.17 nslookup gmail.com
+docker run -itd --name cont-172_17_2 -- rm alpine
+docker run -itd --name cont-172_17_2 -- rm alpine
+docker run -itd --name cont-172_18_2 -- rm alpine
+docker run -itd --net my_bridge --name cont2 --rm alpine
+docker exec cont_172_17 ping -c 4 cont2
+docker exec cont_172_17 ping -c 4 cont-172_17_2
+docker exec cont_172_17 cat /etc/hosts
+docker exec cont_172_17_2 cat /etc/hosts
+docker exec cont1 cat /etc/ hosts
+docker exec cont2 cat /etc/hosts
+docker network create -d bridge --subnet 192.168.1.0/24 --gateway 192.168.1.1 br_192_168
+docker network ls
+docker network inspect br_192_168
+docker run -itd --net br_192_168 --name cont_192_1 --rm alpine
+docker network inspect br_192_168
+docker run -itd --net br_192_168 --name cont_192_2 --rm alpine
+docker exec cont_192_1 cat /etc/hosts
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  ping -c 4 172.17.0.1
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  ping -c 4 192.168.1.1
+docker exec cont_192_1  ping -c 4 172.17.0.2
+docker exec cont_192_1  ping -c 4 172.18.0.2
+docker exec cont_192_1  ping -c 4 cont_192_2
+docker exec cont_192_1  traceroute mail.ru
+docker exec cont_192_1  traceroute 172.17.0.3
+ip a
+docker exec cont_192_1  ip a
+docker network connect my_bridge cont_192_2
+docker exec cont_192_2 ip a
+docker exec cont_192_2  traceroute 172.18.0.3
+docker network create -d bridge --subnet 192.168.2.0/25 --gateway 192.168.2.1 br_192_168_m25
+docker network create -d bridge --subnet 192.168.2.128/25 --gateway 192.168.2.1 br_192_168_m25
+docker stop cont_192_2
+docker stop cont_192_1
+docker stop cont2
+docker stop cont1
+docker network prune
+docker network ls
+docker network create -d host myhost
+docker run --net host -itd --name my_host1 --rm alpine
+Docker network inspect host
+docker run --net host -itd --name my_host2 --rm alpine
+docker exec my_host1 ip a
+docker exec my_host1 ping -c  4 10.0.0.180 
+docker exec my_host1 ping -c  4 localhost
+docker ps
+ping 10.0.0.180 
+docker exec my_host1 ping -c 4 172.17.0.2
+docker exec my_host1 ping -c 4 172.17.0.3
+docker exec my_host1 ping -c 4 172.17.0.4
+docker exec my_host1 ping -c 4 cont_172_17
+docker ps
+docker network ls
+docker run --net none -itd --name my_none1 --rm alpine
+docker run --net none -itd --name my_none2 --rm alpine
+docker exec my_none1 ip a
+docker exec cont_172_17 ip a
+docker network connect host cont_172_17
+docker network ls
+docker network connect host my_none1
+docker exec my_none1 ping -c 4 localhost
