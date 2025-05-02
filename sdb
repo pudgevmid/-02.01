@@ -1,0 +1,293 @@
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.10
+The authenticity of host '192.168.5.10 (192.168.5.10)' can't be established.
+ED25519 key fingerprint is SHA256:AIN3oeev21Oqdlo47hbmHSJ94Uv+aoVQ9PLD4G7R7Dg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.5.10' (ED25519) to the list of known hosts.
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-131-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Пт 02 мая 2025 06:11:45 UTC
+
+  System load:  0.0               Processes:               114
+  Usage of /:   53.9% of 9.75GB   Users logged in:         1
+  Memory usage: 12%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+103 обновления может быть применено немедленно.
+35 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Fri May  2 05:43:57 2025
+pivnoyback@prikoli:~$ sudo fdisk -l
+[sudo] password for pivnoyback: 
+Disk /dev/loop0: 89,4 MiB, 93745152 bytes, 183096 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 44,44 MiB, 46596096 bytes, 91008 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 86,99 MiB, 91213824 bytes, 178152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 63,7 MiB, 66789376 bytes, 130448 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 63,75 MiB, 66842624 bytes, 130552 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop5: 44,45 MiB, 46604288 bytes, 91024 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 21,23 GiB, 22799007744 bytes, 44529312 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 22EF754A-9629-43AF-A166-ADDB29A10F52
+
+Device       Start      End  Sectors  Size Type
+/dev/sda1     2048     4095     2048    1M BIOS boot
+/dev/sda2     4096  3948543  3944448  1,9G Linux filesystem
+/dev/sda3  3948544 44525567 40577024 19,3G Linux filesystem
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xb6e9dce8
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdb1          2048  2099199 2097152    1G 83 Linux
+/dev/sdb2       2099200  5244927 3145728  1,5G  5 Extended
+/dev/sdb3       5244928 10485759 5240832  2,5G 82 Linux swap / Solaris
+/dev/sdb5       2101248  4198399 2097152    1G  7 HPFS/NTFS/exFAT
+/dev/sdb6       4200448  5244927 1044480  510M 83 Linux
+
+Partition table entries are not in disk order.
+
+
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+pivnoyback@prikoli:~$ cd
+pivnoyback@prikoli:~$ sudo fdisk /dev/sdb
+
+Welcome to fdisk (util-linux 2.37.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+
+
+Command (m for help): ls -l
+
+00 Empty            24 NEC DOS          81 Minix / old Lin  bf Solaris        
+01 FAT12            27 Hidden NTFS Win  82 Linux swap / So  c1 DRDOS/sec (FAT-
+02 XENIX root       39 Plan 9           83 Linux            c4 DRDOS/sec (FAT-
+03 XENIX usr        3c PartitionMagic   84 OS/2 hidden or   c6 DRDOS/sec (FAT-
+04 FAT16 <32M       40 Venix 80286      85 Linux extended   c7 Syrinx         
+05 Extended         41 PPC PReP Boot    86 NTFS volume set  da Non-FS data    
+06 FAT16            42 SFS              87 NTFS volume set  db CP/M / CTOS / .
+07 HPFS/NTFS/exFAT  4d QNX4.x           88 Linux plaintext  de Dell Utility   
+08 AIX              4e QNX4.x 2nd part  8e Linux LVM        df BootIt         
+09 AIX bootable     4f QNX4.x 3rd part  93 Amoeba           e1 DOS access     
+0a OS/2 Boot Manag  50 OnTrack DM       94 Amoeba BBT       e3 DOS R/O        
+0b W95 FAT32        51 OnTrack DM6 Aux  9f BSD/OS           e4 SpeedStor      
+0c W95 FAT32 (LBA)  52 CP/M             a0 IBM Thinkpad hi  ea Linux extended 
+0e W95 FAT16 (LBA)  53 OnTrack DM6 Aux  a5 FreeBSD          eb BeOS fs        
+0f W95 Ext'd (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT            
+10 OPUS             55 EZ-Drive         a7 NeXTSTEP         ef EFI (FAT-12/16/
+11 Hidden FAT12     56 Golden Bow       a8 Darwin UFS       f0 Linux/PA-RISC b
+12 Compaq diagnost  5c Priam Edisk      a9 NetBSD           f1 SpeedStor      
+14 Hidden FAT16 <3  61 SpeedStor        ab Darwin boot      f4 SpeedStor      
+16 Hidden FAT16     63 GNU HURD or Sys  af HFS / HFS+       f2 DOS secondary  
+17 Hidden HPFS/NTF  64 Novell Netware   b7 BSDI fs          fb VMware VMFS    
+18 AST SmartSleep   65 Novell Netware   b8 BSDI swap        fc VMware VMKCORE 
+1b Hidden W95 FAT3  70 DiskSecure Mult  bb Boot Wizard hid  fd Linux raid auto
+1c Hidden W95 FAT3  75 PC/IX            bc Acronis FAT32 L  fe LANstep        
+1e Hidden W95 FAT1  80 Old Minix        be Solaris boot     ff BBT            
+
+Aliases:
+   linux          - 83
+   swap           - 82
+   extended       - 05
+   uefi           - EF
+   raid           - FD
+   lvm            - 8E
+   linuxex        - 85
+
+Command (m for help): q
+
+pivnoyback@prikoli:~$ ls -l
+total 12
+drwxr-xr-x 4 pivnoyback pivnoyback 4096 мая  2 06:04 drive_sdb1
+drwxrwxrwx 1 root       root       4096 мая  2 06:07 drive_sdb5
+drwxr-xr-x 3 root       root       4096 мая  2 05:50 drive_sdb6
+pivnoyback@prikoli:~$ cd drive_sdb1
+pivnoyback@prikoli:~/drive_sdb1$ ls -l
+total 24
+-rw-rw-r-- 1 pivnoyback pivnoyback     0 мая  2 06:04 f1
+drwxrwxr-x 2 pivnoyback pivnoyback  4096 мая  2 06:04 F1
+-rw-rw-r-- 1 pivnoyback pivnoyback    18 мая  2 06:05 f2
+drwx------ 2 root       root       16384 мая  2 05:49 lost+found
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.10
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-131-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Пт 02 мая 2025 06:23:12 UTC
+
+  System load:  0.240234375       Processes:               114
+  Usage of /:   53.9% of 9.75GB   Users logged in:         1
+  Memory usage: 11%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+103 обновления может быть применено немедленно.
+35 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Fri May  2 06:11:45 2025 from 192.168.5.1
+pivnoyback@prikoli:~$ cd drive_sdb6
+pivnoyback@prikoli:~/drive_sdb6$ ls -l
+total 16
+drwx------ 2 root root 16384 мая  2 05:50 lost+found
+pivnoyback@prikoli:~/drive_sdb6$ q
+Command 'q' not found, but can be installed with:
+sudo snap install q                       # version 1.6.3-1, or
+sudo apt  install python3-q-text-as-data  # version 3.1.6-1
+See 'snap info q' for additional versions.
+pivnoyback@prikoli:~/drive_sdb6$ w
+ 06:23:37 up 50 min,  2 users,  load average: 0,17, 0,05, 0,01
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+pivnoyba tty1     -                05:43   12:38   0.25s  0.20s -bash
+pivnoyba pts/0    192.168.5.1      06:23    1.00s  0.03s  0.00s w
+pivnoyback@prikoli:~/drive_sdb6$ cd drive_sdb5
+-bash: cd: drive_sdb5: No such file or directory
+pivnoyback@prikoli:~/drive_sdb6$ cd
+pivnoyback@prikoli:~$ cd drive_sdb5
+pivnoyback@prikoli:~/drive_sdb5$ ls -l
+total 0
+-rwxrwxrwx 1 root root 0 мая  2 06:07 f1
+drwxrwxrwx 1 root root 0 мая  2 06:07 F1
+drwxrwxrwx 1 root root 0 мая  2 06:07 F2
+pivnoyback@prikoli:~/drive_sdb5$ cd drive_sdb6
+-bash: cd: drive_sdb6: No such file or directory
+pivnoyback@prikoli:~/drive_sdb5$ cd
+pivnoyback@prikoli:~$ cd drive_sdb6
+pivnoyback@prikoli:~/drive_sdb6$ sudo chown pivnoyback:pivnoyback
+[sudo] password for pivnoyback: 
+chown: missing operand after ‘pivnoyback:pivnoyback’
+Try 'chown --help' for more information.
+pivnoyback@prikoli:~/drive_sdb6$ stat .
+  File: .
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 816h/2070d	Inode: 2           Links: 3
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2025-05-02 06:23:29.600012622 +0000
+Modify: 2025-05-02 05:50:20.000000000 +0000
+Change: 2025-05-02 05:50:20.000000000 +0000
+ Birth: 2025-05-02 05:50:20.000000000 +0000
+pivnoyback@prikoli:~/drive_sdb6$ stat /
+  File: /
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: fd00h/64768d	Inode: 2           Links: 20
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2025-05-02 05:25:34.580000601 +0000
+Modify: 2025-01-30 05:06:14.340467963 +0000
+Change: 2025-01-30 05:06:14.340467963 +0000
+ Birth: 2025-01-30 04:36:44.000000000 +0000
+pivnoyback@prikoli:~/drive_sdb6$ sudo chown pivnoyback:pivnoyback .
+pivnoyback@prikoli:~/drive_sdb6$ stat .
+  File: .
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 816h/2070d	Inode: 2           Links: 3
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/pivnoyback)   Gid: ( 1000/pivnoyback)
+Access: 2025-05-02 06:23:29.600012622 +0000
+Modify: 2025-05-02 05:50:20.000000000 +0000
+Change: 2025-05-02 06:25:45.752013190 +0000
+ Birth: 2025-05-02 05:50:20.000000000 +0000
+pivnoyback@prikoli:~/drive_sdb6$ cd
+pivnoyback@prikoli:~$ ls -l
+total 12
+drwxr-xr-x 4 pivnoyback pivnoyback 4096 мая  2 06:04 drive_sdb1
+drwxrwxrwx 1 root       root       4096 мая  2 06:07 drive_sdb5
+drwxr-xr-x 3 pivnoyback pivnoyback 4096 мая  2 05:50 drive_sdb6
