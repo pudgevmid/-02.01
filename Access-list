@@ -1,0 +1,51 @@
+Router>en 
+Router#show run 
+Building configuration... 
+
+version 15.1 
+no service timestamps log datetime msec 
+no service timestamps debug datetime msec 
+no service password-encryption 
+! 
+hostname Router 
+! 
+ip dhcp pool VLAN60 
+ network 192.168.60.0 255.255.255.0 
+ default-router 192.168.60.254 
+ip dhcp pool VLAN38 
+ network 192.168.38.0 255.255.255.0 
+ default-router 192.168.38.254 
+ip dhcp pool VLAN15 
+ network 192.168.15.0 255.255.255.0 
+ default-router 192.168.15.254 
+ip dhcp pool VLAN12 
+ network 192.168.12.0 255.255.255.0 
+ default-router 192.168.12.254 
+! 
+interface GigabitEthernet0/0 
+ ip address 10.10.2.15 255.255.255.0 
+ ip nat outside 
+! 
+interface GigabitEthernet0/1.60 
+ encapsulation dot1Q 60 
+ ip address 192.168.60.254 255.255.255.0 
+ ip nat inside 
+! 
+interface GigabitEthernet0/1.38 
+ encapsulation dot1Q 38 
+ ip address 192.168.38.254 255.255.255.0 
+ ip nat inside 
+! 
+interface GigabitEthernet0/1.15 
+ encapsulation dot1Q 15 
+ ip address 192.168.15.254 255.255.255.0 
+ ip nat inside 
+! 
+interface GigabitEthernet0/1.12 
+ encapsulation dot1Q 12 
+ ip address 192.168.12.254 255.255.255.0 
+ ip nat inside 
+! 
+ip nat inside source list NAT interface GigabitEthernet0/0 overload 
+! 
+end
