@@ -1,0 +1,181 @@
+Настройка разделов на диске /dev/sdd
+
+1. Изменение типа раздела на 'Linux LVM':
+Command: `t`
+Hex code: `8e00`
+
+2. Создание нового раздела:
+Command: `n`
+Partition number: `5`
+Last sector: `+512M`
+
+3. Создание второго нового раздела:
+Command: `n`
+Partition number: `6`
+Last sector: `+512M`
+
+4. Создание третьего нового раздела:
+Command: `n`
+Partition number: `7`
+Last sector: оставить по умолчанию 
+
+5. Запись изменений на диск:
+Command: `w`
+
+Финальные проверки показали успешную запись таблицы разделов в формате GPT, что перезаписало существующие разделы.
+
+Вывод команды `sudo fdisk -l /dev/sdd` показывает, что диск /dev/sdd состоит из 5 GiB и имеет 7 разделов:
+- /dev/sdd1 - 512M, Linux filesystem
+- /dev/sdd2 - 512M, Linux LVM
+- /dev/sdd3 - 512M, Linux LVM
+- /dev/sdd4 - 1G, Linux LVM
+- /dev/sdd5 - 512M, Linux filesystem
+- /dev/sdd6 - 512M, Linux filesystem
+- /dev/sdd7 - 1.5G, Linux filesystem
+
+ Получение информации о блочных устройствах с помощью `sudo blkid` также подтверждает создание новых разделов и их атрибуты.
+Создаем новую GPT таблицу на диске /dev/sdc
+
+kolea@kolea:~$ sudo gdisk /dev/sdc 
+GPT fdisk (gdisk) version 1.0.8 
+
+Создание новых GPT записей в памяти.
+
+Команда (? для помощи): o 
+Удалить все разделы и создать новую защитную MBR. Продолжить? (Y/N): y 
+
+Создаем разделы
+Команда (? для помощи): n 
+Номер раздела (1-128, по умолчанию 1): 1 
+Первый сектор (34-10485726, по умолчанию = 2048): 
+Последний сектор (2048-10485726, по умолчанию = 10485726): +512M 
+Текущий тип: 8300 (Linux filesystem)
+
+Команда (? для помощи): n 
+Номер раздела (2-128, по умолчанию 2): 2 
+Первый сектор (34-10485726, по умолчанию = 1050624): 
+Последний сектор (1050624-10485726, по умолчанию = 10485726): +512M 
+Текущий тип: 8300 (Linux filesystem) 
+Hex код или GUID: 8e00 
+Тип раздела изменен на 'Linux LVM'
+
+Ниже приведен вывод fdisk для проверки разметки диска.
+
+user@user:~$ sudo fdisk -l /dev/sdc
+Disk /dev/sdc: 5 GiB
+Device       Start      End Sectors  Size Type
+/dev/sdc1     2048  1050623 1048576  512M Linux filesystem
+/dev/sdc2  1050624  2099199 1048576  512M Linux LVM
+...
+311u05@311u05-VirtualBox:~$ 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Сб 03 мая 2025 05:33:43 UTC
+
+  System load:  0.083984375        Users logged in:          1
+  Usage of /:   63.3% of 11.21GB   IPv4 address for docker0: 172.17.0.1
+  Memory usage: 7%                 IPv4 address for enp0s3:  10.0.2.15
+  Swap usage:   0%                 IPv4 address for enp0s8:  192.168.1.23
+  Processes:    137
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+0 обновлений может быть применено немедленно.
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Sat May  3 05:27:49 2025
+311u05@311u05:~$ sudo fdisk -l
+[sudo] password for 311u05: 
+Disk /dev/loop0: 63,91 MiB, 67014656 bytes, 130888 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 89,4 MiB, 93745152 bytes, 183096 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 63,75 MiB, 66850816 bytes, 130568 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 40,43 MiB, 42393600 bytes, 82800 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 50,89 MiB, 53366784 bytes, 104232 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop5: 86,99 MiB, 91213824 bytes, 178152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 25 GiB, 26843545600 bytes, 52428800 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 4DB0F942-9E68-4462-AE38-49A2575EF557
+
+Device       Start      End  Sectors Size Type
+/dev/sda1     2048     4095     2048   1M BIOS boot
+/dev/sda2     4096  4198399  4194304   2G Linux filesystem
+/dev/sda3  4198400 52426751 48228352  23G Linux filesystem
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x782a05c0
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdb1          2048  2099199 2097152    1G 83 Linux
+/dev/sdb2       2099200  5244927 3145728  1,5G  5 Extended
+/dev/sdb3       5244928 10485759 5240832  2,5G 82 Linux swap / Solaris
+/dev/sdb5       2101248  4198399 2097152    1G  7 HPFS/NTFS/exFAT
+/dev/sdb6       4200448  5244927 1044480  510M 83 Linux
+
+Partition table entries are not in disk order.
+
+
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
