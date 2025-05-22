@@ -1,0 +1,91 @@
+Router>en 
+Router#show run 
+Building configuration... 
+! 
+version 15.1 
+hostname Router 
+! 
+interface GigabitEthernet0/0 
+ ip address 10.1.0.1 255.255.255.0 
+! 
+interface GigabitEthernet0/1 
+ ip address 10.2.0.1 255.255.255.0 
+! 
+router rip 
+network 10.0.0.0 
+! 
+end 
+
+Настройка второго роутера
+
+Router>en 
+Router#show run 
+Building configuration... 
+! 
+version 15.1 
+hostname Router 
+! 
+interface GigabitEthernet0/0 
+ ip address 10.3.0.1 255.255.255.0 
+! 
+interface GigabitEthernet0/1 
+ ip address 10.2.0.2 255.255.255.0 
+! 
+interface GigabitEthernet0/2 
+ ip address 10.4.0.1 255.255.255.0 
+! 
+router rip 
+ network 10.0.0.0 
+! 
+end 
+
+Настройка веб-сервера
+
+Router>en 
+Router#show run 
+Building configuration... 
+
+Текущая конфигурация: 740 байт 
+! 
+version 15.1 
+hostname Router 
+! 
+interface GigabitEthernet0/1 
+ ip address 10.5.0.1 255.255.255.0 
+! 
+interface GigabitEthernet0/2 
+ ip address 10.4.0.2 255.255.255.0 
+! 
+router rip 
+ network 10.0.0.0 
+! 
+end 
+
+Настройка локального сервера
+
+IP: 10.1.0.2 /24, шлюз: 10.1.0.1 
+DNS: 
+ type-Arecord, name-root, address 10.3.0.2 
+
+Настройка корневого сервера
+
+IP: 10.3.0.2 /24, шлюз: 10.3.0.1 
+DNS: 
+ type-SOA, name-aut, server name-aut, 
+ mail box-aut, serial = 4063577 
+
+Настройка DNS-сервера
+IP: 10.5.0.2 /24, шлюз: 10.5.0.1 
+DNS: 
+ type-Arecord, name-aut_dns-shop.ru, address 10.5.0.2 
+
+Настройка веб-сервера dns-shop.ru
+IP: 10.5.0.3 /24, шлюз: 10.5.0.1 
+HTTP: 
+<html><center>Web сервер dns-shop.ru</center></html> 
+
+Настройка ПК
+IP: 10.1.0.3 /24, шлюз: 10.1.0.1 
+DNS: 10.1.0.2 
+
+Для всех роутеров включен RIP 10.0.0.0
