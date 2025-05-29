@@ -1,0 +1,959 @@
+u05@u05-VirtualBox:~$ sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+[sudo] пароль для u05: 
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.10
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-134-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Чт 29 мая 2025 02:56:17 UTC
+
+  System load:  0.0               Processes:               115
+  Usage of /:   59.9% of 9.75GB   Users logged in:         1
+  Memory usage: 10%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+68 обновлений может быть применено немедленно.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Thu May 29 02:30:01 2025
+pivnoyback@prikoli:~$ sudo gdisk /dev/sdc
+[sudo] password for pivnoyback: 
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-10485726, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-10485726, default = 10485726) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): fd00
+Changed type of partition to 'Linux RAID'
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to /dev/sdc.
+The operation has completed successfully.
+pivnoyback@prikoli:~$ sudo gdisk /dev/sdd
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-10485726, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-10485726, default = 10485726) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): fd00
+Changed type of partition to 'Linux RAID'
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to /dev/sdd.
+The operation has completed successfully.
+pivnoyback@prikoli:~$ sudo gdisk /dev/sdf
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-10485726, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-10485726, default = 10485726) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): fd00
+Changed type of partition to 'Linux RAID'
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to /dev/sdf.
+The operation has completed successfully.
+pivnoyback@prikoli:~$ sudo mdadm --detail --scan --verbose
+pivnoyback@prikoli:~$ sudo mdadm --detail --scan --verbose
+pivnoyback@prikoli:~$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]   
+Пол:4 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2 598 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [421 kB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [18,5 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [3 585 kB]
+Пол:8 http://ru.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [640 kB]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 c-n-f Metadata [676 B]
+Пол:10 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1 207 kB]
+Пол:11 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [298 kB]
+Пол:12 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [28,7 kB]
+Пол:13 http://ru.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [46,5 kB]
+Пол:14 http://ru.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [11,8 kB]
+Пол:15 http://ru.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 c-n-f Metadata [592 B]
+Пол:16 http://ru.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [68,8 kB]
+Пол:17 http://ru.archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [11,4 kB]
+Пол:18 http://ru.archive.ubuntu.com/ubuntu jammy-backports/main amd64 c-n-f Metadata [392 B]
+Пол:19 http://ru.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [30,0 kB]
+Пол:20 http://ru.archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16,5 kB]
+Пол:21 http://ru.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 c-n-f Metadata [672 B]
+Пол:22 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]     
+Пол:23 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2 352 kB]
+Пол:24 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [357 kB]
+Пол:25 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [13,6 kB]
+Пол:26 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [3 460 kB]
+Пол:27 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [618 kB]
+Пол:28 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 c-n-f Metadata [624 B]
+Пол:29 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [974 kB]
+Пол:30 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [210 kB]
+Пол:31 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [21,7 kB]
+Пол:32 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [39,6 kB]
+Пол:33 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [8 716 B]
+Пол:34 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [368 B]
+Получено 17,4 MB за 54с (321 kB/s)                                             
+
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлено 137 пакетов. Запустите «apt list --upgradable» для их показа.
+pivnoyback@prikoli:~$ sudo apt install mdadm
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет mdadm самой новой версии (4.2-0ubuntu2).
+mdadm помечен как установленный вручную.
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 137 пакетов не обновлено.
+pivnoyback@prikoli:~$ sudo fdick -l
+sudo: fdick: command not found
+pivnoyback@prikoli:~$ sudo fdisk -l
+Disk /dev/loop0: 63,77 MiB, 66863104 bytes, 130592 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 86,99 MiB, 91213824 bytes, 178152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 63,75 MiB, 66842624 bytes, 130552 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 89,4 MiB, 93745152 bytes, 183096 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 44,45 MiB, 46604288 bytes, 91024 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop5: 50,89 MiB, 53366784 bytes, 104232 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 21,23 GiB, 22799007744 bytes, 44529312 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 22EF754A-9629-43AF-A166-ADDB29A10F52
+
+Device       Start      End  Sectors  Size Type
+/dev/sda1     2048     4095     2048    1M BIOS boot
+/dev/sda2     4096  3948543  3944448  1,9G Linux filesystem
+/dev/sda3  3948544 44525567 40577024 19,3G Linux filesystem
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xb6e9dce8
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdb1          2048  2099199 2097152    1G 83 Linux
+/dev/sdb2       2099200  5244927 3145728  1,5G  5 Extended
+/dev/sdb3       5244928 10485759 5240832  2,5G 82 Linux swap / Solaris
+/dev/sdb5       2101248  4198399 2097152    1G  7 HPFS/NTFS/exFAT
+/dev/sdb6       4200448  5244927 1044480  510M 83 Linux
+
+Partition table entries are not in disk order.
+
+
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 2730C857-C028-41C6-AE7A-1803E540971B
+
+Device     Start      End  Sectors Size Type
+/dev/sdc1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: C76731B9-4A45-4DF5-8F5C-E93CCA02532C
+
+Device     Start      End  Sectors Size Type
+/dev/sdd1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sde: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sdf: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 0C4D5A88-C009-4F4B-AD18-A0FF26A91089
+
+Device     Start      End  Sectors Size Type
+/dev/sdf1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sdg: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+pivnoyback@prikoli:~$ sudo mdadm --detail --scan --verbose
+pivnoyback@prikoli:~$ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-device=2 /dev/sdc1 /dev/sdd1
+mdadm: Note: this array has metadata at the start and
+    may not be suitable as a boot device.  If you plan to
+    store '/boot' on this device please ensure that
+    your boot-loader understands md/v1.x metadata, or use
+    --metadata=0.90
+mdadm: size set to 5236672K
+Continue creating array? y
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+pivnoyback@prikoli:~$ sudo mdadm --detail --scan --verbose
+ARRAY /dev/md0 level=raid1 num-devices=2 metadata=1.2 name=prikoli:0 UUID=18756f15:f82da3ae:109dd9e5:93d4c1ed
+   devices=/dev/sdc1,/dev/sdd1
+pivnoyback@prikoli:~$ sudo su -
+root@prikoli:~# cat /etc/mdadm/mdadm.conf
+# mdadm.conf
+#
+# !NB! Run update-initramfs -u after updating this file.
+# !NB! This will ensure that initramfs has an uptodate copy.
+#
+# Please refer to mdadm.conf(5) for information about this file.
+#
+
+# by default (built-in), scan all partitions (/proc/partitions) and all
+# containers for MD superblocks. alternatively, specify devices to scan, using
+# wildcards if desired.
+#DEVICE partitions containers
+
+# automatically tag new arrays as belonging to the local system
+HOMEHOST <system>
+
+# instruct the monitoring daemon where to send mail alerts
+MAILADDR root
+
+# definitions of existing MD arrays
+
+# This configuration was auto-generated on Fri, 16 Feb 2024 18:45:30 +0000 by mkconf
+root@prikoli:~# echo "Device partitions" >> /etc/mdadm/mdadm.conf
+root@prikoli:~# mdadm --detail --scan --verbose | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
+root@prikoli:~# cat /etc/mdadm/mdadm.conf
+# mdadm.conf
+#
+# !NB! Run update-initramfs -u after updating this file.
+# !NB! This will ensure that initramfs has an uptodate copy.
+#
+# Please refer to mdadm.conf(5) for information about this file.
+#
+
+# by default (built-in), scan all partitions (/proc/partitions) and all
+# containers for MD superblocks. alternatively, specify devices to scan, using
+# wildcards if desired.
+#DEVICE partitions containers
+
+# automatically tag new arrays as belonging to the local system
+HOMEHOST <system>
+
+# instruct the monitoring daemon where to send mail alerts
+MAILADDR root
+
+# definitions of existing MD arrays
+
+# This configuration was auto-generated on Fri, 16 Feb 2024 18:45:30 +0000 by mkconf
+Device partitions
+ARRAY /dev/md0 level=raid1 num-devices=2 metadata=1.2 name=prikoli:0 UUID=18756f15:f82da3ae:109dd9e5:93d4c1ed
+root@prikoli:~# fsick -l
+Command 'fsick' not found, did you mean:
+  command 'fsck' from deb util-linux (2.37.2-4ubuntu3.4)
+  command 'sick' from deb clc-intercal (1:1.0~4pre1.-94.-2-5.1)
+Try: apt install <deb name>
+root@prikoli:~# fdisk -l
+Disk /dev/loop0: 63,77 MiB, 66863104 bytes, 130592 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 86,99 MiB, 91213824 bytes, 178152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 63,75 MiB, 66842624 bytes, 130552 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 89,4 MiB, 93745152 bytes, 183096 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 44,45 MiB, 46604288 bytes, 91024 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop5: 50,89 MiB, 53366784 bytes, 104232 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 21,23 GiB, 22799007744 bytes, 44529312 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 22EF754A-9629-43AF-A166-ADDB29A10F52
+
+Device       Start      End  Sectors  Size Type
+/dev/sda1     2048     4095     2048    1M BIOS boot
+/dev/sda2     4096  3948543  3944448  1,9G Linux filesystem
+/dev/sda3  3948544 44525567 40577024 19,3G Linux filesystem
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xb6e9dce8
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdb1          2048  2099199 2097152    1G 83 Linux
+/dev/sdb2       2099200  5244927 3145728  1,5G  5 Extended
+/dev/sdb3       5244928 10485759 5240832  2,5G 82 Linux swap / Solaris
+/dev/sdb5       2101248  4198399 2097152    1G  7 HPFS/NTFS/exFAT
+/dev/sdb6       4200448  5244927 1044480  510M 83 Linux
+
+Partition table entries are not in disk order.
+
+
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 2730C857-C028-41C6-AE7A-1803E540971B
+
+Device     Start      End  Sectors Size Type
+/dev/sdc1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: C76731B9-4A45-4DF5-8F5C-E93CCA02532C
+
+Device     Start      End  Sectors Size Type
+/dev/sdd1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sde: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sdf: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 0C4D5A88-C009-4F4B-AD18-A0FF26A91089
+
+Device     Start      End  Sectors Size Type
+/dev/sdf1   2048 10485726 10483679   5G Linux RAID
+
+
+Disk /dev/sdg: 5 GiB, 5368709120 bytes, 10485760 sectors
+Disk model: VBOX HARDDISK   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/md0: 4,99 GiB, 5362352128 bytes, 10473344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+root@prikoli:~# gdisk /dev/md0
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-10473310, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-10473310, default = 10473310) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): 
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to /dev/md0.
+The operation has completed successfully.
+root@prikoli:~# lsblk -f
+NAME FSTYPE FSVER LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+loop0
+     squash 4.0                                                      0   100% /snap/core20/2582
+loop1
+     squash 4.0                                                      0   100% /snap/lxd/27037
+loop2
+     squash 4.0                                                      0   100% /snap/core20/2496
+loop3
+     squash 4.0                                                      0   100% /snap/lxd/31333
+loop4
+     squash 4.0                                                      0   100% /snap/snapd/23771
+loop5
+     squash 4.0                                                      0   100% /snap/snapd/24505
+sda                                                                           
+├─sda1
+│                                                                             
+├─sda2
+│    ext4   1.0         5a9cda9e-70bf-4f75-b97e-a158d1f5f617      1,5G    13% /boot
+└─sda3
+     LVM2_m LVM2        mvzSPG-rcc9-DnsY-3wch-UtAi-Y2sC-zE0WKE                
+  └─ubuntu--vg-ubuntu--lv
+     ext4   1.0         2c30de80-abde-4d74-85bb-b52feeb91c59      3,4G    60% /
+sdb                                                                           
+├─sdb1
+│    ext4   1.0         82e9a95c-b409-40fd-9f5d-1da8ef2f9c5d                  
+├─sdb2
+│                                                                             
+├─sdb3
+│                                                                             
+├─sdb5
+│    ntfs               0C92850F12BBB27F                                      
+└─sdb6
+     ext4   1.0         d7433fa0-6e0a-4c0f-a43b-7cf8454cede2                  
+sdc                                                                           
+└─sdc1
+     linux_ 1.2   prikoli:0
+                        18756f15-f82d-a3ae-109d-d9e593d4c1ed                  
+  └─md0
+                                                                              
+    └─md0p1
+                                                                                
+sdd                                                                           
+└─sdd1
+     linux_ 1.2   prikoli:0
+                        18756f15-f82d-a3ae-109d-d9e593d4c1ed                  
+  └─md0
+                                                                              
+    └─md0p1
+                                                                                
+sde                                                                           
+sdf                                                                           
+└─sdf1
+                                                                              
+sdg                                                                           
+sr0                                                                           
+root@prikoli:~# mkds.ext4 /dev/md0p1
+Command 'mkds.ext4' not found, did you mean:
+  command 'mkfs.ext4' from deb e2fsprogs (1.46.5-2ubuntu1.2)
+Try: apt install <deb name>
+root@prikoli:~# mkfs.ext4 /dev/md0p1
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 1308907 4k blocks and 327680 inodes
+Filesystem UUID: 147a689d-3759-44bb-bbce-ec6f94d561a4
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done 
+
+root@prikoli:~# mkdir /demia/RAID
+mkdir: cannot create directory ‘/demia/RAID’: No such file or directory
+root@prikoli:~# mkdir /media/RAID
+root@prikoli:~# mount /dev/md0p1 /media/RAID
+root@prikoli:~# chown pivnoyback:pivnoyback /media/RAID
+root@prikoli:~# exit
+logout
+pivnoyback@prikoli:~$ cd /media/RAID
+pivnoyback@prikoli:/media/RAID$ touch 123
+pivnoyback@prikoli:/media/RAID$ echo "..."
+...
+pivnoyback@prikoli:/media/RAID$ blkid /dev/md0p1 >> 123
+pivnoyback@prikoli:/media/RAID$ cat 123
+pivnoyback@prikoli:/media/RAID$ cat >> 123
+fsdfsdkmf
+\sgms;dgm
+d[sglmsd;gm
+p[sdgm;sdm
+^C
+pivnoyback@prikoli:/media/RAID$ cat 123
+fsdfsdkmf
+\sgms;dgm
+d[sglmsd;gm
+p[sdgm;sdm
+pivnoyback@prikoli:/media/RAID$ cat /proc/mdstat
+Personalities : [linear] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4] [raid10] 
+md0 : active raid1 sdd1[1] sdc1[0]
+      5236672 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>
+pivnoyback@prikoli:/media/RAID$ Connection to 192.168.5.10 closed by remote host.
+Connection to 192.168.5.10 closed.
+u05@u05-VirtualBox:~$ 
+u05@u05-VirtualBox:~$ sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+[sudo] пароль для u05: 
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.1
+ssh: connect to host 192.168.5.1 port 22: Connection refused
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.1
+ssh: connect to host 192.168.5.1 port 22: Connection refused
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.1
+ssh: connect to host 192.168.5.1 port 22: Connection refused
+u05@u05-VirtualBox:~$ sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.1
+ssh: connect to host 192.168.5.1 port 22: Connection refused
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.10
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-134-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Чт 29 мая 2025 03:27:16 UTC
+
+  System load:  0.478515625       Processes:               126
+  Usage of /:   60.1% of 9.75GB   Users logged in:         1
+  Memory usage: 10%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+141 обновление может быть применено немедленно.
+62 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Thu May 29 03:25:45 2025
+pivnoyback@prikoli:~$ fdisk -l
+fdisk: cannot open /dev/loop0: Permission denied
+fdisk: cannot open /dev/loop1: Permission denied
+fdisk: cannot open /dev/loop2: Permission denied
+fdisk: cannot open /dev/loop3: Permission denied
+fdisk: cannot open /dev/loop4: Permission denied
+fdisk: cannot open /dev/loop5: Permission denied
+fdisk: cannot open /dev/sda: Permission denied
+fdisk: cannot open /dev/sdb: Permission denied
+fdisk: cannot open /dev/sdc: Permission denied
+fdisk: cannot open /dev/sdd: Permission denied
+fdisk: cannot open /dev/sde: Permission denied
+fdisk: cannot open /dev/sdf: Permission denied
+fdisk: cannot open /dev/sdg: Permission denied
+fdisk: cannot open /dev/md127: Permission denied
+fdisk: cannot open /dev/mapper/ubuntu--vg-ubuntu--lv: Permission denied
+pivnoyback@prikoli:~$ sudo fdisk -l | grep md0
+[sudo] password for pivnoyback: 
+pivnoyback@prikoli:~$ sudo update-initramfs -u
+update-initramfs: Generating /boot/initrd.img-5.15.0-134-generic
+pivnoyback@prikoli:~$ Connection to 192.168.5.10 closed by remote host.
+Connection to 192.168.5.10 closed.
+u05@u05-VirtualBox:~$ sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.1
+ssh: connect to host 192.168.5.1 port 22: Connection refused
+u05@u05-VirtualBox:~$ ssh pivnoyback@192.168.5.10
+pivnoyback@192.168.5.10's password: 
+Permission denied, please try again.
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-134-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Чт 29 мая 2025 03:27:16 UTC
+
+  System load:  0.478515625       Processes:               126
+  Usage of /:   60.1% of 9.75GB   Users logged in:         1
+  Memory usage: 10%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+141 обновление может быть применено немедленно.
+62 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Thu May 29 03:31:41 2025
+pivnoyback@prikoli:~$ sudo fdisk -l | grep md
+[sudo] password for pivnoyback: 
+Disk /dev/md0: 4,99 GiB, 5362352128 bytes, 10473344 sectors
+/dev/md0p1  2048 10473310 10471263   5G Linux filesystem
+pivnoyback@prikoli:~$ sudo su -
+root@prikoli:~# bklid /dev/md0p1 >> /etc/fstab
+Command 'bklid' not found, did you mean:
+  command 'blkid' from deb util-linux (2.37.2-4ubuntu3.4)
+Try: apt install <deb name>
+root@prikoli:~# blkid /dev/md0p1 >> /etc/fstab
+root@prikoli:~# nano /etc/fstab
+root@prikoli:~# mount -a
+mount: ext4: mount point does not exist.
+root@prikoli:~# nano /etc/fstab
+root@prikoli:~# 
+root@prikoli:~# mount -a
+root@prikoli:~# wxit
+Command 'wxit' not found, did you mean:
+  command 'xwit' from deb xwit (3.4-16)
+  command 'wit' from deb wit (3.01a-4)
+Try: apt install <deb name>
+root@prikoli:~# exit
+logout
+pivnoyback@prikoli:~$ cd /media/RAID
+pivnoyback@prikoli:/media/RAID$ cat 123
+fsdfsdkmf
+\sgms;dgm
+d[sglmsd;gm
+p[sdgm;sdm
+pivnoyback@prikoli:/media/RAID$ cp -r /etc/media/RAID
+cp: missing destination file operand after '/etc/media/RAID'
+Try 'cp --help' for more information.
+pivnoyback@prikoli:/media/RAID$ sudo cp -r /etc /media/RAID
+pivnoyback@prikoli:/media/RAID$ ls -l etc
+total 840
+-rw-r--r-- 1 root root  3028 мая 29 03:39 adduser.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 alternatives
+drwxr-xr-x 3 root root  4096 мая 29 03:39 apparmor
+drwxr-xr-x 9 root root  4096 мая 29 03:39 apparmor.d
+drwxr-xr-x 3 root root  4096 мая 29 03:39 apport
+drwxr-xr-x 9 root root  4096 мая 29 03:39 apt
+-rw-r--r-- 1 root root  2319 мая 29 03:39 bash.bashrc
+-rw-r--r-- 1 root root    45 мая 29 03:39 bash_completion
+drwxr-xr-x 2 root root  4096 мая 29 03:39 bash_completion.d
+-rw-r--r-- 1 root root   367 мая 29 03:39 bindresvport.blacklist
+drwxr-xr-x 2 root root  4096 мая 29 03:39 binfmt.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 byobu
+drwxr-xr-x 3 root root  4096 мая 29 03:39 ca-certificates
+-rw-r--r-- 1 root root  6529 мая 29 03:39 ca-certificates.conf
+-rw-r--r-- 1 root root  5892 мая 29 03:39 ca-certificates.conf.dpkg-old
+drwxr-xr-x 5 root root  4096 мая 29 03:39 cloud
+drwxr-xr-x 2 root root  4096 мая 29 03:39 console-setup
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cron.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cron.daily
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cron.hourly
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cron.monthly
+-rw-r--r-- 1 root root  1136 мая 29 03:39 crontab
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cron.weekly
+drwxr-xr-x 2 root root  4096 мая 29 03:39 cryptsetup-initramfs
+-rw-r--r-- 1 root root    54 мая 29 03:39 crypttab
+drwxr-xr-x 4 root root  4096 мая 29 03:39 dbus-1
+-rw-r--r-- 1 root root  2969 мая 29 03:39 debconf.conf
+-rw-r--r-- 1 root root    13 мая 29 03:39 debian_version
+drwxr-xr-x 3 root root  4096 мая 29 03:39 default
+-rw-r--r-- 1 root root   604 мая 29 03:39 deluser.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 depmod.d
+drwxr-xr-x 5 root root  4096 мая 29 03:39 dhcp
+drwxr-xr-x 4 root root  4096 мая 29 03:39 dpkg
+-rw-r--r-- 1 root root   685 мая 29 03:39 e2scrub.conf
+-rw-r--r-- 1 root root   106 мая 29 03:39 environment
+-rw-r--r-- 1 root root  1816 мая 29 03:39 ethertypes
+-rw-r--r-- 1 root root   749 мая 29 03:39 fstab
+-rw-r--r-- 1 root root   694 мая 29 03:39 fuse.conf
+drwxr-xr-x 3 root root  4096 мая 29 03:39 fwupd
+-rw-r--r-- 1 root root  2584 мая 29 03:39 gai.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 groff
+-rw-r--r-- 1 root root   834 мая 29 03:39 group
+-rw-r--r-- 1 root root   821 мая 29 03:39 group-
+drwxr-xr-x 2 root root  4096 мая 29 03:39 grub.d
+-rw-r----- 1 root root   701 мая 29 03:39 gshadow
+-rw-r----- 1 root root   691 мая 29 03:39 gshadow-
+drwxr-xr-x 3 root root  4096 мая 29 03:39 gss
+-rw-r--r-- 1 root root  4436 мая 29 03:39 hdparm.conf
+-rw-r--r-- 1 root root    92 мая 29 03:39 host.conf
+-rw-r--r-- 1 root root     8 мая 29 03:39 hostname
+-rw-r--r-- 1 root root   222 мая 29 03:39 hosts
+-rw-r--r-- 1 root root   411 мая 29 03:39 hosts.allow
+-rw-r--r-- 1 root root   711 мая 29 03:39 hosts.deny
+drwxr-xr-x 2 root root  4096 мая 29 03:39 init.d
+drwxr-xr-x 5 root root  4096 мая 29 03:39 initramfs-tools
+-rw-r--r-- 1 root root  1748 мая 29 03:39 inputrc
+drwxr-xr-x 4 root root  4096 мая 29 03:39 iproute2
+drwxr-xr-x 2 root root  4096 мая 29 03:39 iscsi
+-rw-r--r-- 1 root root    26 мая 29 03:39 issue
+-rw-r--r-- 1 root root    19 мая 29 03:39 issue.net
+drwxr-xr-x 6 root root  4096 мая 29 03:39 kernel
+drwxr-xr-x 2 root root  4096 мая 29 03:39 landscape
+drwxr-xr-x 2 root root  4096 мая 29 03:39 ldap
+-rw-r--r-- 1 root root 20447 мая 29 03:39 ld.so.cache
+-rw-r--r-- 1 root root    34 мая 29 03:39 ld.so.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 ld.so.conf.d
+-rw-r--r-- 1 root root   267 мая 29 03:39 legal
+-rw-r--r-- 1 root root   191 мая 29 03:39 libaudit.conf
+drwxr-xr-x 3 root root  4096 мая 29 03:39 libblockdev
+drwxr-xr-x 2 root root  4096 мая 29 03:39 libnl-3
+-rw-r--r-- 1 root root  2996 мая 29 03:39 locale.alias
+-rw-r--r-- 1 root root  9456 мая 29 03:39 locale.gen
+lrwxrwxrwx 1 root root    27 мая 29 03:39 localtime -> /usr/share/zoneinfo/Etc/UTC
+drwxr-xr-x 4 root root  4096 мая 29 03:39 logcheck
+-rw-r--r-- 1 root root 10734 мая 29 03:39 login.defs
+-rw-r--r-- 1 root root   592 мая 29 03:39 logrotate.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 logrotate.d
+-rw-r--r-- 1 root root   104 мая 29 03:39 lsb-release
+drwxr-xr-x 3 root root  4096 мая 29 03:39 lvm
+-r--r--r-- 1 root root    33 мая 29 03:39 machine-id
+-rw-r--r-- 1 root root   111 мая 29 03:39 magic
+-rw-r--r-- 1 root root   111 мая 29 03:39 magic.mime
+-rw-r--r-- 1 root root  5217 мая 29 03:39 manpath.config
+drwxr-xr-x 2 root root  4096 мая 29 03:39 mdadm
+-rw-r--r-- 1 root root 72029 мая 29 03:39 mime.types
+-rw-r--r-- 1 root root   744 мая 29 03:39 mke2fs.conf
+drwxr-xr-x 4 root root  4096 мая 29 03:39 ModemManager
+drwxr-xr-x 2 root root  4096 мая 29 03:39 modprobe.d
+-rw-r--r-- 1 root root   195 мая 29 03:39 modules
+drwxr-xr-x 2 root root  4096 мая 29 03:39 modules-load.d
+lrwxrwxrwx 1 root root    19 мая 29 03:39 mtab -> ../proc/self/mounts
+drwx------ 2 root root  4096 мая 29 03:39 multipath
+-rw-r--r-- 1 root root    41 мая 29 03:39 multipath.conf
+-rw-r--r-- 1 root root 11204 мая 29 03:39 nanorc
+drwxr-xr-x 6 root root  4096 мая 29 03:39 needrestart
+-rw-r--r-- 1 root root   767 мая 29 03:39 netconfig
+drwxr-xr-x 2 root root  4096 мая 29 03:39 netplan
+drwxr-xr-x 4 root root  4096 мая 29 03:39 network
+drwxr-xr-x 8 root root  4096 мая 29 03:39 networkd-dispatcher
+-rw-r--r-- 1 root root    91 мая 29 03:39 networks
+drwxr-xr-x 2 root root  4096 мая 29 03:39 newt
+-rwxr-xr-x 1 root root   228 мая 29 03:39 nftables.conf
+-rw-r--r-- 1 root root   510 мая 29 03:39 nsswitch.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 opt
+lrwxrwxrwx 1 root root    21 мая 29 03:39 os-release -> ../usr/lib/os-release
+-rw-r--r-- 1 root root  6920 мая 29 03:39 overlayroot.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 PackageKit
+-rw-r--r-- 1 root root   552 мая 29 03:39 pam.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 pam.d
+-rw-r--r-- 1 root root  1888 мая 29 03:39 passwd
+-rw-r--r-- 1 root root  1888 мая 29 03:39 passwd-
+drwxr-xr-x 3 root root  4096 мая 29 03:39 perl
+drwxr-xr-x 4 root root  4096 мая 29 03:39 pki
+drwxr-xr-x 3 root root  4096 мая 29 03:39 pm
+drwxr-xr-x 4 root root  4096 мая 29 03:39 polkit-1
+drwxr-xr-x 2 root root  4096 мая 29 03:39 pollinate
+-rw-r--r-- 1 root root   582 мая 29 03:39 profile
+drwxr-xr-x 2 root root  4096 мая 29 03:39 profile.d
+-rw-r--r-- 1 root root  2932 мая 29 03:39 protocols
+drwxr-xr-x 2 root root  4096 мая 29 03:39 python3
+drwxr-xr-x 2 root root  4096 мая 29 03:39 python3.10
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc0.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc1.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc2.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc3.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc4.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc5.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rc6.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rcS.d
+lrwxrwxrwx 1 root root    39 мая 29 03:39 resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
+lrwxrwxrwx 1 root root    13 мая 29 03:39 rmt -> /usr/sbin/rmt
+-rw-r--r-- 1 root root   887 мая 29 03:39 rpc
+-rw-r--r-- 1 root root  1382 мая 29 03:39 rsyslog.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 rsyslog.d
+-rw-r--r-- 1 root root  3663 мая 29 03:39 screenrc
+drwxr-xr-x 4 root root  4096 мая 29 03:39 security
+drwxr-xr-x 2 root root  4096 мая 29 03:39 selinux
+-rw-r--r-- 1 root root 12813 мая 29 03:39 services
+-rw-r----- 1 root root  1087 мая 29 03:39 shadow
+-rw-r----- 1 root root  1087 мая 29 03:39 shadow-
+-rw-r--r-- 1 root root   158 мая 29 03:39 shells
+drwxr-xr-x 2 root root  4096 мая 29 03:39 skel
+drwxr-xr-x 6 root root  4096 мая 29 03:39 sos
+drwxr-xr-x 4 root root  4096 мая 29 03:39 ssh
+drwxr-xr-x 4 root root  4096 мая 29 03:39 ssl
+-rw-r--r-- 1 root root    24 мая 29 03:39 subgid
+-rw-r--r-- 1 root root     0 мая 29 03:39 subgid-
+-rw-r--r-- 1 root root    24 мая 29 03:39 subuid
+-rw-r--r-- 1 root root     0 мая 29 03:39 subuid-
+-rw-r--r-- 1 root root  4573 мая 29 03:39 sudo.conf
+-r--r----- 1 root root  1671 мая 29 03:39 sudoers
+drwxr-xr-x 2 root root  4096 мая 29 03:39 sudoers.d
+-rw-r--r-- 1 root root  9390 мая 29 03:39 sudo_logsrvd.conf
+-rw-r--r-- 1 root root  2355 мая 29 03:39 sysctl.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 sysctl.d
+drwxr-xr-x 5 root root  4096 мая 29 03:39 systemd
+drwxr-xr-x 2 root root  4096 мая 29 03:39 terminfo
+drwxr-xr-x 2 root root  4096 мая 29 03:39 thermald
+-rw-r--r-- 1 root root     8 мая 29 03:39 timezone
+drwxr-xr-x 2 root root  4096 мая 29 03:39 tmpfiles.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 ubuntu-advantage
+-rw-r--r-- 1 root root  1260 мая 29 03:39 ucf.conf
+drwxr-xr-x 4 root root  4096 мая 29 03:39 udev
+drwxr-xr-x 2 root root  4096 мая 29 03:39 udisks2
+drwxr-xr-x 3 root root  4096 мая 29 03:39 ufw
+drwxr-xr-x 3 root root  4096 мая 29 03:39 update-manager
+drwxr-xr-x 2 root root  4096 мая 29 03:39 update-motd.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 update-notifier
+drwxr-xr-x 2 root root  4096 мая 29 03:39 UPower
+-rw-r--r-- 1 root root  1523 мая 29 03:39 usb_modeswitch.conf
+drwxr-xr-x 2 root root  4096 мая 29 03:39 usb_modeswitch.d
+drwxr-xr-x 2 root root  4096 мая 29 03:39 vim
+drwxr-xr-x 4 root root  4096 мая 29 03:39 vmware-tools
+lrwxrwxrwx 1 root root    23 мая 29 03:39 vtrgb -> /etc/alternatives/vtrgb
+-rw-r--r-- 1 root root  4942 мая 29 03:39 wgetrc
+drwxr-xr-x 4 root root  4096 мая 29 03:39 X11
+-rw-r--r-- 1 root root   681 мая 29 03:39 xattr.conf
+drwxr-xr-x 4 root root  4096 мая 29 03:39 xdg
+-rw-r--r-- 1 root root   460 мая 29 03:39 zsh_command_not_found
