@@ -1,0 +1,144 @@
+u05@u05-VirtualBox:/var/lib$ ls -l
+итого 276
+drwxrwxr-x  4 root          root          4096 авг  8  2023 AccountsService
+drwxr-xr-x  2 root          root          4096 апр 14  2022 acpi-support
+drwxr-xr-x  2 root          root          4096 мар 13 14:01 alsa
+lrwxrwxrwx  1 root          root            18 фев  6 16:04 app-info -> /var/lib/swcatalog
+drwxr-xr-x  3 root          root          4096 фев  6 17:08 apport
+drwxr-xr-x  5 root          root          4096 апр 16 10:18 apt
+drwxr-xr-x  2 root          root          4096 авг  8  2023 aspell
+drwxr-x---  2 avahi-autoipd avahi-autoipd 4096 авг  8  2023 avahi-autoipd
+drwxrwxr-x  2 root          bind          4096 мар  7 12:41 bind
+drwxr-xr-x  2 root          root          4096 мар 24  2022 bluetooth
+drwxr-xr-x  2 root          root          4096 фев  7  2022 boltd
+drwxrwxrwt  2 root          root          4096 июн 28  2022 BrlAPI
+drwxr-xr-x  4 colord        colord        4096 фев  6 17:17 colord
+drwxr-xr-x  2 root          root          4096 апр 16 09:36 command-not-found
+drwx--x--x 11 root          root          4096 мар 13 13:01 containerd
+drwxr-xr-x  2 root          root          4096 фев  6 17:08 dbus
+drwxrwxr-x  2 root          dhcpd         4096 мая 29 13:25 dhcp
+drwxr-xr-x  5 root          root          4096 авг  8  2023 dictionaries-common
+drwx--x--- 12 root          root          4096 мая 29 12:24 docker
+drwxr-xr-x  7 root          root          4096 апр 16 10:18 dpkg
+drwxr-xr-x  3 root          root          4096 авг  8  2023 emacsen-common
+drwx------  2 root          root          4096 июл 16  2022 fprint
+drwxr-xr-x  7 root          root          4096 фев 13 13:22 fwupd
+drwx--x--x  6 gdm           gdm           4096 мая 29 12:23 gdm3
+drwxr-xr-x  2 geoclue       geoclue       4096 мар 23  2022 geoclue
+drwxr-xr-x  4 root          root          4096 авг  8  2023 ghostscript
+drwxr-xr-x  2 root          root          4096 янв 14 03:13 git
+drwxr-xr-x  4 root          root          4096 авг  8  2023 grub
+drwxr-xr-x  2 root          root          4096 янв 22  2022 hp
+drwxr-xr-x  2 root          root          4096 авг  8  2023 ispell
+drwxr-xr-x  3 root          root          4096 авг  8  2023 locales
+drwxr-xr-x  2 root          root          4096 мая 29 09:05 logrotate
+drwxr-xr-x  2 root          root          4096 авг  8  2023 man-db
+drwxr-xr-x  2 root          root          4096 апр 18  2022 misc
+drwx------  2 root          root          4096 мая 29 13:33 NetworkManager
+drwxr-xr-x  3 root          root          4096 авг  8  2023 openvpn
+drwxr-xr-x  2 root          root          4096 мар 24  2022 os-prober
+drwxr-xr-x  2 root          root          4096 фев  6 17:17 PackageKit
+drwxr-xr-x  2 root          root          4096 мар  6 14:33 pam
+drwxr-xr-x  2 root          root          4096 фев  6 17:17 plymouth
+drwx------  3 root          root          4096 авг  8  2023 polkit-1
+drwxr-xr-x  2 root          root          4096 фев  6 17:15 power-profiles-daemon
+drwx------  2 root          root          4096 авг  8  2023 private
+drwxr-xr-x  2 root          root          4096 авг  8  2023 python
+drwxr-x---  2 saned         saned         4096 авг  8  2023 saned
+drwxr-xr-x  2 root          root          4096 авг  8  2023 sgml-base
+-rw-r--r--  1 root          root             0 авг  8  2023 shells.state
+drwxr-xr-x  3 root          root          4096 авг  8  2023 shim-signed
+drwxr-xr-x 24 root          root          4096 мая 29 12:24 snapd
+drwxr-xr-x  2 root          root          4096 фев 17  2023 snmp
+drwxr-xr-x  3 root          root          4096 авг  8  2023 sudo
+drwxr-xr-x  4 root          root          4096 апр 16 09:36 swcatalog
+drwxr-xr-x 11 root          root          4096 фев  6 17:15 systemd
+drwxr-xr-x  2 tss           tss           4096 янв 26  2022 tpm
+drwxrwxr-x  2 root          root          4096 фев  6 16:14 ubiquity
+drwxr-xr-x  4 root          root          4096 мар  7 12:55 ubuntu-advantage
+drwxr-xr-x  2 root          root          4096 фев  6 17:15 ubuntu-drivers-common
+drwxr-xr-x  2 root          root          4096 мар 13 13:40 ubuntu-release-upgrader
+drwxr-xr-x  3 root          root          4096 фев  6 16:35 ucf
+drwx------  2 root          root          4096 фев  6 17:15 udisks2
+drwxr-xr-x  2 root          root          4096 янв 15  2022 unattended-upgrades
+drwxr-xr-x  2 root          root          4096 дек  2  2022 update-manager
+drwxr-xr-x  4 root          root          4096 апр 16 10:18 update-notifier
+drwxr-xr-x  2 root          root          4096 мар 10  2022 upower
+drwxr-xr-x  2 root          root          4096 мар 25  2022 usb_modeswitch
+drwxr-xr-x  2 root          root          4096 авг  8  2023 usbutils
+drwxr-xr-x  3 root          root          4096 авг  8  2023 vim
+drwxr-xr-x  2 root          root          4096 мая 29 12:24 whoopsie
+drwxr-xr-x  2 root          root          4096 авг  8  2023 xfonts
+drwxr-xr-x  2 root          root          4096 мар  6 14:13 xkb
+drwxr-xr-x  2 root          root          4096 авг  8  2023 xml-core
+u05@u05-VirtualBox:/var/lib$ ssh pivnoyback@192.168.5.10
+pivnoyback@192.168.5.10's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 5.15.0-134-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+  System information as of Чт 29 мая 2025 06:35:20 UTC
+
+  System load:  0.30078125        Processes:               120
+  Usage of /:   87.0% of 9.75GB   Users logged in:         1
+  Memory usage: 21%               IPv4 address for enp0s3: 192.168.5.10
+  Swap usage:   0%
+
+  => / is using 87.0% of 9.75GB
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Расширенное поддержание безопасности (ESM) для Applications выключено.
+
+141 обновление может быть применено немедленно.
+62 из этих обновлений, являются стандартными обновлениями безопасности.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Включите ESM Apps для получения дополнительных будущих обновлений безопасности.
+Смотрите https://ubuntu.com/esm или выполните: sudo pro status
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Thu May 29 06:06:01 2025 from 192.168.5.1
+pivnoyback@prikoli:~$ sudo cp -r ~/docker/ .
+[sudo] password for pivnoyback: 
+cp: '/home/pivnoyback/docker/' and './docker' are the same file
+pivnoyback@prikoli:~$ cd /media/RAID/
+pivnoyback@prikoli:/media/RAID$ sudo cp -r ~/docker/ .
+^C        
+pivnoyback@prikoli:/media/RAID$ sudo df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              197M  1,2M  196M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  9,8G  8,5G  771M  92% /
+tmpfs                              983M     0  983M   0% /dev/shm
+tmpfs                              5,0M     0  5,0M   0% /run/lock
+/dev/sda2                          1,9G  245M  1,5G  15% /boot
+/dev/md0p1                         4,9G  1,2G  3,4G  26% /media/RAID
+tmpfs                              197M  4,0K  197M   1% /run/user/1000
+pivnoyback@prikoli:/media/RAID$ sudo dh -hs
+sudo: dh: command not found
+pivnoyback@prikoli:/media/RAID$ sudo du -hs
+1,2G	.
+pivnoyback@prikoli:/media/RAID$ ls -l
+total 28
+-rw-rw-r--  1 pivnoyback pivnoyback    43 мая 29 03:23 123
+drwx--x---  8 root       root        4096 мая 29 06:36 docker
+drwxr-xr-x 96 root       root        4096 мая 29 03:39 etc
+drwx------  2 root       root       16384 мая 29 03:18 lost+found
+pivnoyback@prikoli:/media/RAID$ watch cat /proc/mdstat 
+pivnoyback@prikoli:/media/RAID$ mdadm /dev/md0 --add /dev/sdf1
+mdadm: error opening /dev/md0: Permission denied
+pivnoyback@prikoli:/media/RAID$ sudo mdadm /dev/md0 --add /dev/sdf1
+mdadm: added /dev/sdf1
+pivnoyback@prikoli:/media/RAID$ sudo cat /proc/mdstat
+Personalities : [raid1] [linear] [multipath] [raid0] [raid6] [raid5] [raid4] [raid10] 
+md0 : active raid1 sdf1[2] sdc1[0]
+      5236672 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>
