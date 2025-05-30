@@ -1,0 +1,152 @@
+pivnoyback@prikoli:~$ sudo vim /etc/samba/smb.conf
+[sudo] password for pivnoyback: 
+pivnoyback@prikoli:~$ sudo testparm
+Load smb config files from /etc/samba/smb.conf
+Unknown parameter encountered: "valid user"
+Ignoring unknown parameter "valid user"
+Loaded services file OK.
+Weak crypto is allowed
+
+Server role: ROLE_STANDALONE
+
+Press enter to see a dump of your service definitions
+
+# Global parameters
+[global]
+	log file = /var/log/samba/log.%m
+	logging = file
+	map to guest = Bad User
+	max log size = 1000
+	obey pam restrictions = Yes
+	pam password change = Yes
+	panic action = /usr/share/samba/panic-action %d
+	passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+	passwd program = /usr/bin/passwd %u
+	server role = standalone server
+	server string = %h server (Samba, Ubuntu)
+	unix password sync = Yes
+	usershare allow guests = Yes
+	idmap config * : backend = tdb
+
+
+[printers]
+	browseable = No
+	comment = All Printers
+	create mask = 0700
+	path = /var/spool/samba
+	printable = Yes
+
+
+[print$]
+	comment = Printer Drivers
+	path = /var/lib/samba/printers
+
+
+[Shared1]
+	comment = SimpleShare
+	inherit acls = Yes
+	path = /media/RAID/Shared
+	read list = pivnoyback
+	read only = No
+	write list = pivnoyback
+pivnoyback@prikoli:~$ sudo smbpasswd -a pivnoyback
+New SMB password:
+Retype new SMB password:
+Added user pivnoyback.
+pivnoyback@prikoli:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:27:99:04 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.5.10/24 metric 100 brd 192.168.5.255 scope global dynamic enp0s3
+       valid_lft 450sec preferred_lft 450sec
+    inet6 fe80::a00:27ff:fe27:9904/64 scope link 
+       valid_lft forever preferred_lft forever
+pivnoyback@prikoli:~$ sudo service smbd restart
+pivnoyback@prikoli:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:27:99:04 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.5.10/24 metric 100 brd 192.168.5.255 scope global dynamic enp0s3
+       valid_lft 410sec preferred_lft 410sec
+    inet6 fe80::a00:27ff:fe27:9904/64 scope link 
+       valid_lft forever preferred_lft forever
+pivnoyback@prikoli:~$ ip a | grep 192.168.5.10
+    inet 192.168.5.10/24 metric 100 brd 192.168.5.255 scope global dynamic enp0s3
+pivnoyback@prikoli:~$ sudo vim /etc/samba/smb.conf
+pivnoyback@prikoli:~$ ls -l
+total 16
+-rw-r--r-- 1 root       root         38 мая 29 05:38 123.txt
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:50 drive_sdb1
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:51 drive_sdb5
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:51 drive_sdb6
+pivnoyback@prikoli:~$ cd /media/RAID
+pivnoyback@prikoli:/media/RAID$ ls -l
+total 28
+-rw-rw-r--  1 pivnoyback pivnoyback    43 мая 29 03:23 123
+drwx--x---  8 root       root        4096 мая 29 06:36 docker
+drwxr-xr-x 96 root       root        4096 мая 29 03:39 etc
+drwx------  2 root       root       16384 мая 29 03:18 lost+found
+pivnoyback@prikoli:/media/RAID$ cd
+pivnoyback@prikoli:~$ ls -l
+total 16
+-rw-r--r-- 1 root       root         38 мая 29 05:38 123.txt
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:50 drive_sdb1
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:51 drive_sdb5
+drwxrwxr-x 2 pivnoyback pivnoyback 4096 мая  2 05:51 drive_sdb6
+pivnoyback@prikoli:~$ cd /home/
+pivnoyback@prikoli:/home$ ls -l
+total 4
+drwxr-x--- 7 pivnoyback pivnoyback 4096 мая 29 07:14 pivnoyback
+pivnoyback@prikoli:/home$ cd /media/RAID
+pivnoyback@prikoli:/media/RAID$ mkdir Shared
+pivnoyback@prikoli:/media/RAID$ ls -l
+total 32
+-rw-rw-r--  1 pivnoyback pivnoyback    43 мая 29 03:23 123
+drwx--x---  8 root       root        4096 мая 29 06:36 docker
+drwxr-xr-x 96 root       root        4096 мая 29 03:39 etc
+drwx------  2 root       root       16384 мая 29 03:18 lost+found
+drwxrwxr-x  2 pivnoyback pivnoyback  4096 мая 30 02:22 Shared
+pivnoyback@prikoli:/media/RAID$ sudo service smbd restart
+pivnoyback@prikoli:/media/RAID$ ls -l
+total 32
+-rw-rw-r--  1 pivnoyback pivnoyback    43 мая 29 03:23 123
+drwx--x---  8 root       root        4096 мая 29 06:36 docker
+drwxr-xr-x 96 root       root        4096 мая 29 03:39 etc
+drwx------  2 root       root       16384 мая 29 03:18 lost+found
+drwxrwxr-x  3 pivnoyback pivnoyback  4096 мая 30 02:24 Shared
+pivnoyback@prikoli:/media/RAID$ cd /Shared/
+-bash: cd: /Shared/: No such file or directory
+pivnoyback@prikoli:/media/RAID$ cd /media/RAID/Shared/
+pivnoyback@prikoli:/media/RAID/Shared$ ls -l
+total 4
+drwxr-xr-x 2 pivnoyback pivnoyback 4096 мая 30 02:25 FromUbuntuDesk
+pivnoyback@prikoli:/media/RAID/Shared$ cat ыыы.txt
+cat: ыыы.txt: No such file or directory
+pivnoyback@prikoli:/media/RAID/Shared$ cd /media/RAID/Shared/FromUbuntuDesk/
+pivnoyback@prikoli:/media/RAID/Shared/FromUbuntuDesk$ ls -l
+total 4
+-rwxr--r-- 1 pivnoyback pivnoyback 57 мая 30 02:25 ыыыы.txt
+pivnoyback@prikoli:/media/RAID/Shared/FromUbuntuDesk$ cat ыыыы.txt
+Файл для проверки работы самба
+pivnoyback@prikoli:/media/RAID/Shared/FromUbuntuDesk$ cd
+pivnoyback@prikoli:~$ sudo useradd -m -s /bin/bash voloshchuk
+pivnoyback@prikoli:~$ sudo useradd -m -s /bin/bash voloshchuk
+useradd: user 'voloshchuk' already exists
+pivnoyback@prikoli:~$ sudo passwd voloshchuk
+New password: 
+Retype new password: 
+passwd: password updated successfully
+pivnoyback@prikoli:~$ sudo smbpasswd -a voloshchuk
+New SMB password:
+Retype new SMB password:
+Added user voloshchuk.
