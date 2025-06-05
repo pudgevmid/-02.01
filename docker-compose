@@ -1,0 +1,62 @@
+┌──(05㉿voloshchuk)-[~/mytest/Docker-compose/doc_net_test]
+└─$ cat docker-compose.yml               
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    restart: always
+  cont_test1:
+    container_name: ttt1
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - net_test
+  cont_test2:
+    container_name: ttt2
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - net_test
+  cont_test3:
+    container_name: ttt3
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - net_test
+  mysqj:
+    image: mysql
+    container_name: BD_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '12345'
+    networks:
+       net_test:
+        ipv4_address: 155.155.5.211
+networks:
+  net_test:
+    name: testnet
+    internal: true
+    ipam:
+      config:
+        - subnet: 155.155.5.0/24
+
+┌──(05㉿voloshchuk)-[~/mytest/Docker-compose/doc_net_test]
+└─$ cat Dockerfile        
+FROM ubuntu
+WORKDIR /home/ubuntu
+RUN apt update && apt install iproute2 -y && apt install mysql-client -y && apt upgrade -y && apt install iputils-ping -y 
+RUN touch 123
+RUN ip -4 addr >> 123
+RUN echo "   " >> 123 && mysql --version >> 123
